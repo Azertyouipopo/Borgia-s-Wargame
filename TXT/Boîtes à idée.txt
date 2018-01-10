@@ -37,6 +37,24 @@ Définitions des classe :
    - Lance 3 PA
   - Arc/Javelot 2 PA et 2 Case de distance
 
+- Mode Défense
+ Une unité peux passer un tour et se mettre en défense se qui a pour effet de réduire de 5% l'attaque adverse puis de 0,25% de plus si le défenseur posséde 1 point d'armure.
+
+- Charge
+ Une unité peux chargé sur une case devant lui ce qui lui confére un point de déplacement supplémentaire lui permettant sois de fuir ou d'aller a la confrontation direct avec un adversaire suite a cette charge l'unité devra attendre 1 tour pour récupéré.
+
+- Attaque 
+ Les unités attaque automatiquement lorsqu'elle sont face à un adversaire.
+ Les groupes d'allié on un bonus d'attaque de 0,25% par personnage attaquant un même adversaire.
+ Lors d'une attaque de groupe l'unité qui se fait attaqué est la premiére a faire le jet d'initiative ensuite se sont les ennemies qui font chacun un jet qui déterminera dans quelle ordre il attaqueront si l'unité seul a le jet le plus petit elle aura un bonus qui lui permet d'obtenir un bonus d'attaque de 5%
+ L'unité qui se fait attaquer si elle fait le plus petit jet d'initiative pourra si elle le désire fuir en fesant un jet de dé de 100 avec un malus de 5 (On ajoutera 5 aux résultat de sont jet), elle pourra fuir que si sont jet est inférieur à 30.
+ Les Archers et les Chavaliers en armure lourde peuvent tirer/lancer sur un ennemies a 180° au tour d'eux sur 2 case de distance.
+
+- Environnement 
+ Le terrain pourra contenir différent éléments telles que des murs ou des arbres.
+ 
+
+
 - Chevalier
   - A pied
   - Armes de mélée
