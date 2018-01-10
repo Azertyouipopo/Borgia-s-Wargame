@@ -6,7 +6,7 @@ class Character:
 ##    - son armure
 ##    - force
 
-    def __init__(self,role,lifePts,speed,armor,strengh,actionPts):
+    def __init__(self):
         self.role = "Personnage"
         self.lifePts = 50
         self.speed = 1
@@ -14,6 +14,9 @@ class Character:
         self.strengh = 10
         self.actionPts = 1
 
+
+def tol():
+    print("fdw")
     
         
         
