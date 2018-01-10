@@ -20,8 +20,8 @@ Définitions des classe :
 
 - Terrain:
   - Hauteur
-   - Malus de -1 PA
-   - Bonus de +1 PA
+   - Malus de -5% PA
+   - Bonus de +5% PA
   - Irrégularité
    - Riviére
     - Traversé
@@ -63,7 +63,7 @@ Définitions des classe :
   - Pv Faible
    - 8 Pv
   - Vitese Moyenne
-   - 2 PD
+   - 4 PD
 
 - Chevalier en armure lourde
   - A pied
