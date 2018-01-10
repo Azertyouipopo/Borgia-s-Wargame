@@ -1,4 +1,6 @@
 
+
+
 ##################### Creation de tableau general #####################
 
 
@@ -31,7 +33,7 @@ def createArrayGeneral(x,y,step):
             if z != 0 and o != 0:
              tab.append([z,o,"terre","vide"])
     
-    return tab
+    return tab,totalCase
 
 ########################################################################
 
@@ -39,40 +41,39 @@ def createArrayGeneral(x,y,step):
 
 
     
-############ Creation de tableau specifique ############
+############ Creation de tableau specifique et affichage ############
 
 
-def createArrayMap(tableauGeneral):
+def createArrayMap(tableauGeneral,x,y):
     tab = []
     for x in range (0,len(tableauGeneral)):
         tab.append(tableauGeneral[x][2])    
-
     return tab
 
 
 
 
-def createArrayCharacter(tableauGeneral):
+def createArrayCharacter(tableauGeneral,x,y):
     tab = []
     for x in range (0,len(tableauGeneral)):
         tab.append(tableauGeneral[x][3])
-        
     return tab
         
 
-########################################################
+####################################################################
 
 
 
+    
+
+######################## Formatage  ####################
 
 
+    
+    
 
 
-######## Formatage pour mode console de tableau ########
-
-
-
-def formatViewArray(tableau,x,y):
+def formatViewArray(tableau,x,y,a):
 
     i = 0
     
@@ -80,7 +81,7 @@ def formatViewArray(tableau,x,y):
 
         for z in range(0,x,10):
             
-            print (tableau[i],end =" ")
+            print (tableau[i][a],end =" ")
             i+=1
         print ('')
 
