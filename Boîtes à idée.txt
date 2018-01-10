@@ -1,0 +1,90 @@
+Optimisateur de WarGame.
+
+Fonctions du logiciel :
+
+- Moteur de combat
+
+- Générateur d'armée
+
+- Simulé une bataille aléatoire
+
+Définitions des classe :
+
+- Personnages :
+  - Point de vie
+  - Point d'armure
+  - Dégats d'attaque
+  - Défense
+  - Points d'initiative
+  - Points de déplacement
+
+- Terrain:
+  - Hauteur
+   - Malus de -1 PA
+   - Bonus de +1 PA
+  - Irrégularité
+   - Riviére
+    - Traversé
+     - Malus de -1 PD
+    - Bord de la riviére
+     - Bonus de +5% PI pour les unités sur la rive
+     - Malus de -5% PI pour les unités qui arrive sur la rive
+
+- Armes :
+  - Armes de mélée
+   - Epée 4 PA
+   - Masse 1 PA
+   - Lance 3 PA
+  - Arc/Javelot 2 PA et 2 Case de distance
+
+- Chevalier
+  - A pied
+  - Armes de mélée
+   - Epée
+  - Pv Moyen
+   - 15 Pv
+  - Armure Moyenne
+   - 5 Pts
+  - Vitesse Moyenne
+   - 2 PD
+
+- Archer
+  - A pied
+  - Arc
+  - Pv Faible
+   - 5 Pv
+  - Vitesse Moyenne
+   - 2 PD
+
+- Soldat
+  - A pied
+  - Armes de mélée
+   - Masse
+  - Pv Faible
+   - 8 Pv
+  - Vitese Moyenne
+   - 2 PD
+
+- Chevalier en armure lourde
+  - A pied
+  - Armes de mélée
+   - Epée
+  - Javelot
+  - Pv Moyen
+   - 15 Pv
+  - Armure Moyenne
+   - 8 Pts
+  - Vitese Faibles
+   - 1 PD
+
+- Cavalier
+  - A cheval
+   - Posibilités de Chargé seulement en ligne droite
+  - Armes de mélée
+   - Lance
+  - Pv Moyen
+   - 20 Pv (15 Pv + 5 Pv Monture)
+  - Armure Légére
+   - 2 Pts
+  - Vitesse Haute
+   - 4 PD

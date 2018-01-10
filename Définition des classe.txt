@@ -1,0 +1,18 @@
+Personnage
+  Point de Vie (Vie défini)
+  Point de Déplacement (Vitesse)
+  Point d'Armure (Armure défini)
+  (Recevoir des Dégats)
+
+Armes
+  Epée/Lance/Masse
+   Point d'attaque
+  Arc/Javelot
+   Point d'attaque
+   Distance d'Effet
+
+Initiative
+
+Terrain
+ Hauteur
+ Irrégularité
