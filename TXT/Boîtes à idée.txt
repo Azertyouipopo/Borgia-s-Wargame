@@ -27,8 +27,8 @@ Définitions des classe :
     - Traversé
      - Malus de -1 PD
     - Bord de la riviére
-     - Bonus de +5% PI pour les unités sur la rive
-     - Malus de -5% PI pour les unités qui arrive sur la rive
+     - Bonus de -5 PI (On enleve 5 au jet) pour les unités sur la rive
+     - Malus de +5 PI (On aujoute 5 au jet d'initiative) pour les unités qui arrive sur la rive
 
 - Armes :
   - Armes de mélée
@@ -38,20 +38,21 @@ Définitions des classe :
   - Arc/Javelot 2 PA et 2 Case de distance
 
 - Mode Défense
- Une unité peux passer un tour et se mettre en défense se qui a pour effet de réduire de 5% l'attaque adverse puis de 0,25% de plus si le défenseur posséde 1 point d'armure.
+ Une unité peux passer un tour et se mettre en défense se qui a pour effet de réduire de 5% l'attaque adverse puis de 0,25% de plus par point d'armure.
 
 - Charge
- Une unité peux chargé sur une case devant lui ce qui lui confére un point de déplacement supplémentaire lui permettant sois de fuir ou d'aller a la confrontation direct avec un adversaire suite a cette charge l'unité devra attendre 1 tour pour récupéré.
+ Une unité peux chargé sur une case devant lui ce qui lui confére un point de déplacement supplémentaire lui permettant sois de fuir ou d'aller a la confrontation direct avec un adversaire suite a cette charge l'unité pourra initié le combat s'il y a un adverssaire puis devra attendre 1 tour pour récupéré totalement de la charge.
 
 - Attaque 
  Les unités attaque automatiquement lorsqu'elle sont face à un adversaire.
  Les groupes d'allié on un bonus d'attaque de 0,25% par personnage attaquant un même adversaire.
  Lors d'une attaque de groupe l'unité qui se fait attaqué est la premiére a faire le jet d'initiative ensuite se sont les ennemies qui font chacun un jet qui déterminera dans quelle ordre il attaqueront si l'unité seul a le jet le plus petit elle aura un bonus qui lui permet d'obtenir un bonus d'attaque de 5%
  L'unité qui se fait attaquer si elle fait le plus petit jet d'initiative pourra si elle le désire fuir en fesant un jet de dé de 100 avec un malus de 5 (On ajoutera 5 aux résultat de sont jet), elle pourra fuir que si sont jet est inférieur à 30.
- Les Archers et les Chavaliers en armure lourde peuvent tirer/lancer sur un ennemies a 180° au tour d'eux sur 2 case de distance.
+ Les Archers et les Chavaliers en armure lourde peuvent tirer/lancer sur un ennemies a 180° autour d'eux sur 2 case de distance.
 
 - Environnement 
  Le terrain pourra contenir différent éléments telles que des murs ou des arbres.
+ Les murs auront pour effet de fournir un protection (Une unité ne pourra attaqué une unité à travers un mur) et un bonnus d'initiative de 2 (Réduira son jet de 2) dûs à la surprise, les arbres offriront une protection mais seulement un bonus de 1 sur l'initative.
  
 
 
