@@ -1,65 +1,67 @@
 Optimisateur de WarGame.
 
+RedÃ©finir les points d'armures pour qu'elle divise les dÃ©gats reÃ§us au lieu d'avoir une bar d'armure en plus de la vie.
+
 Fonctions du logiciel :
 
 - Moteur de combat
 
-- Générateur d'armée
+- GÃ©nÃ©rateur d'armÃ©e
 
-- Simulé une bataille aléatoire
+- SimulÃ© une bataille alÃ©atoire
 
-Définitions des classe :
+DÃ©finitions des classe :
 
 - Personnages :
   - Point de vie
   - Point d'armure
-  - Dégats d'attaque
-  - Défense
+  - DÃ©gats d'attaque
+  - DÃ©fense
   - Points d'initiative
-  - Points de déplacement
+  - Points de dÃ©placement
 
 - Terrain:
   - Hauteur
    - Malus de -5% PA
    - Bonus de +5% PA
-  - Irrégularité
-   - Riviére
-    - Traversé
+  - IrrÃ©gularitÃ©
+   - RiviÃ©re
+    - TraversÃ©
      - Malus de -1 PD
-    - Bord de la riviére
-     - Bonus de -5 PI (On enleve 5 au jet) pour les unités sur la rive
-     - Malus de +5 PI (On aujoute 5 au jet d'initiative) pour les unités qui arrive sur la rive
+    - Bord de la riviÃ©re
+     - Bonus de -5 PI (On enleve 5 au jet) pour les unitÃ©s sur la rive
+     - Malus de +5 PI (On aujoute 5 au jet d'initiative) pour les unitÃ©s qui arrive sur la rive
 
 - Armes :
-  - Armes de mélée
-   - Epée 4 PA
+  - Armes de mÃ©lÃ©e
+   - EpÃ©e 4 PA
    - Masse 1 PA
    - Lance 3 PA
   - Arc/Javelot 2 PA et 2 Case de distance
 
-- Mode Défense
- Une unité peux passer un tour et se mettre en défense se qui a pour effet de réduire de 5% l'attaque adverse puis de 0,25% de plus par point d'armure.
+- Mode DÃ©fense
+ Une unitÃ© peux passer un tour et se mettre en dÃ©fense se qui a pour effet de rÃ©duire de 5% l'attaque adverse puis de 0,25% de plus par point d'armure.
 
 - Charge
- Une unité peux chargé sur une case devant lui ce qui lui confére un point de déplacement supplémentaire lui permettant sois de fuir ou d'aller a la confrontation direct avec un adversaire suite a cette charge l'unité pourra initié le combat s'il y a un adverssaire puis devra attendre 1 tour pour récupéré totalement de la charge.
+ Une unitÃ© peux chargÃ© sur une case devant lui ce qui lui confÃ©re un point de dÃ©placement supplÃ©mentaire lui permettant sois de fuir ou d'aller a la confrontation direct avec un adversaire suite a cette charge l'unitÃ© pourra initiÃ© le combat s'il y a un adverssaire puis devra attendre 1 tour pour rÃ©cupÃ©rÃ© totalement de la charge.
 
 - Attaque 
- Les unités attaque automatiquement lorsqu'elle sont face à un adversaire.
- Les groupes d'allié on un bonus d'attaque de 0,25% par personnage attaquant un même adversaire.
- Lors d'une attaque de groupe l'unité qui se fait attaqué est la premiére a faire le jet d'initiative ensuite se sont les ennemies qui font chacun un jet qui déterminera dans quelle ordre il attaqueront si l'unité seul a le jet le plus petit elle aura un bonus qui lui permet d'obtenir un bonus d'attaque de 5%
- L'unité qui se fait attaquer si elle fait le plus petit jet d'initiative pourra si elle le désire fuir en fesant un jet de dé de 100 avec un malus de 5 (On ajoutera 5 aux résultat de sont jet), elle pourra fuir que si sont jet est inférieur à 30.
- Les Archers et les Chavaliers en armure lourde peuvent tirer/lancer sur un ennemies a 180° autour d'eux sur 2 case de distance.
+ Les unitÃ©s attaque automatiquement lorsqu'elle sont face Ã  un adversaire.
+ Les groupes d'alliÃ© on un bonus d'attaque de 0,25% par personnage attaquant un mÃªme adversaire.
+ Lors d'une attaque de groupe l'unitÃ© qui se fait attaquÃ© est la premiÃ©re a faire le jet d'initiative ensuite se sont les ennemies qui font chacun un jet qui dÃ©terminera dans quelle ordre il attaqueront si l'unitÃ© seul a le jet le plus petit elle aura un bonus qui lui permet d'obtenir un bonus d'attaque de 5%
+ L'unitÃ© qui se fait attaquer si elle fait le plus petit jet d'initiative pourra si elle le dÃ©sire fuir en fesant un jet de dÃ© de 100 avec un malus de 5 (On ajoutera 5 aux rÃ©sultat de sont jet), elle pourra fuir que si sont jet est infÃ©rieur Ã  30.
+ Les Archers et les Chavaliers en armure lourde peuvent tirer/lancer sur un ennemies a 180Â° autour d'eux sur 2 case de distance.
 
 - Environnement 
- Le terrain pourra contenir différent éléments telles que des murs ou des arbres.
- Les murs auront pour effet de fournir un protection (Une unité ne pourra attaqué une unité à travers un mur) et un bonnus d'initiative de 2 (Réduira son jet de 2) dûs à la surprise, les arbres offriront une protection mais seulement un bonus de 1 sur l'initative.
+ Le terrain pourra contenir diffÃ©rent Ã©lÃ©ments telles que des murs ou des arbres.
+ Les murs auront pour effet de fournir un protection (Une unitÃ© ne pourra attaquÃ© une unitÃ© Ã  travers un mur) et un bonnus d'initiative de 2 (RÃ©duira son jet de 2) dÃ»s Ã  la surprise, les arbres offriront une protection mais seulement un bonus de 1 sur l'initative.
  
 
 
 - Chevalier
   - A pied
-  - Armes de mélée
-   - Epée
+  - Armes de mÃ©lÃ©e
+   - EpÃ©e
   - Pv Moyen
    - 15 Pv
   - Armure Moyenne
@@ -77,7 +79,7 @@ Définitions des classe :
 
 - Soldat
   - A pied
-  - Armes de mélée
+  - Armes de mÃ©lÃ©e
    - Masse
   - Pv Faible
    - 8 Pv
@@ -86,8 +88,8 @@ Définitions des classe :
 
 - Chevalier en armure lourde
   - A pied
-  - Armes de mélée
-   - Epée
+  - Armes de mÃ©lÃ©e
+   - EpÃ©e
   - Javelot
   - Pv Moyen
    - 15 Pv
@@ -98,12 +100,12 @@ Définitions des classe :
 
 - Cavalier
   - A cheval
-   - Posibilités de Chargé seulement en ligne droite
-  - Armes de mélée
+   - PosibilitÃ©s de ChargÃ© seulement en ligne droite
+  - Armes de mÃ©lÃ©e
    - Lance
   - Pv Moyen
    - 20 Pv (15 Pv + 5 Pv Monture)
-  - Armure Légére
+  - Armure LÃ©gÃ©re
    - 2 Pts
   - Vitesse Haute
    - 4 PD
