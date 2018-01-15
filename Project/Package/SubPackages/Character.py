@@ -11,22 +11,24 @@ class Character:
 ##    - force
 ##    - ça position
 
-    def __init__(self):
+    blue = [] #Creation d'une equipe soit equipe bleu
+    red = []#Creation d'une equipe soit equipe rouge
+    
+    def __init__(self,color):
         self.role = "Personnage"
+        self.identificateur = id(self) # Inscript l'id de lobjet 
         self.lifePts = 50
         self.speed = 1
         self.armor = 5
         self.strengh = 10
         self.actionPts = 1
-        
 
-    def deplacement(self):
-        mouvement = randrange(1,5,1)
-        if mouvement == 1:
-            self.oldPosition[1] = self.oldPosition[1] - 10
-            print(self.oldPosition)
-        
+        self.putInArmy('blue',id(self))
+    
+    def putInArmy(cls,color,identificateur):
+        if color == 'blue': 
+            cls.blue.append(identificateur)
 
-    def setPosition(self,tab):
+    def setPosition(self,tab): # Defini d   
         self.oldPosition = tab
         print(self.oldPosition)
