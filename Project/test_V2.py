@@ -4,22 +4,47 @@ Fenetre.title("Test")
 nb_Col = int(input("Col ?"))
 nb_Ligne = int(input("Ligne ?"))
 esp = int(input("Espace ?"))
+color=input("Couleur ?")
+
+
+w=0
+h=0
 
 def taille_Affichage(nb_Col,esp,nb_Ligne):
-    h=0
-    w=0
+    global w
+    global h
     if nb_Col >30 or nb_Ligne >30 or esp>40:
         print("ERREUR")
     if nb_Col == 20 and nb_Ligne == 20 and esp == 20:
         w=440
         h=440
     if nb_Col == 20 and nb_Ligne == 20 and esp == 10:
-        w=440
+        h=440
+        w=240
+    if nb_Col == 30 and nb_Ligne == 30 and esp == 10:
+        w=940
+        h=340
+    if nb_Col == 30 and nb_Ligne == 20 and esp == 30:
+        w=940
+        h=650
+    if nb_Col == 20 and nb_Ligne == 10 and esp == 40:
+        w=840
         h=240
-    return w,h
-        
-
-
+    if nb_Col == 20 and nb_Ligne == 30 and esp == 40:
+        w=840
+        h=640
+    if nb_Col == 20 and nb_Ligne == 20 and esp == 40:
+        w=840
+        h=440
+    if nb_Col == 20 and nb_Ligne == 20 and esp == 30:
+        w=640
+        h=440
+    if nb_Col == 20 and nb_Ligne == 20 and esp == 10:
+        h=440
+        w=240
+    if nb_Col == 10 and nb_Ligne == 20 and esp == 10:
+        w=340
+        h=640
 
 ## W , H  (nb_Col,esp,nb_Ligne)
 ##940,340 (30,30,10)
@@ -53,11 +78,9 @@ def crea_Grille(nb_Col,esp,nb_Ligne):
         y=y + nb_Col
         b=b+1
 
-## i indique l'espacement entre les lignes ligne
-
-zone_canvas= Canvas(Fenetre, width=w,height=h,bg='red',relief="ridge")
-zone_canvas.pack()
 taille_Affichage(nb_Col,esp,nb_Ligne)
+zone_canvas= Canvas(Fenetre, width=w,height=h,bg=color,relief="ridge")
+zone_canvas.pack()
 crea_Grille(nb_Col,esp,nb_Ligne)
         
 
