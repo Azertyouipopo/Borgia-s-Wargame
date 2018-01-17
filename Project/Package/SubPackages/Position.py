@@ -1,4 +1,5 @@
 class Position:
+    #Classe qui permet l'insertion de personnage dans le tableaus
 
     def __init__(self,plateauDeJeu,Character):
 
@@ -12,6 +13,6 @@ class Position:
         self.plateauDeJeu.tableauGeneral[22][2] = personnage2
         personnage.setPosition = self.plateauDeJeu.tableauGeneral[22][0]
         
-        print(personnage.setPosition)
+        
         
     
