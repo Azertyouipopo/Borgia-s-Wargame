@@ -27,8 +27,8 @@ def select_Plateau():
     global esp
     global nb_Ligne
     if user == 0 or user > 10:
-        print("Veuillez séléctioner un plateau de jeu ?")
-        user = int(input("Choisisez un plateau de jeu ?"))
+        print("Veuillez séléctioner un plateau de jeu !")
+        user = int(input("Choisisez un plateau de jeu parmi les 10 proposé seulement !"))
     if user == 1:
         nb_Col=30
         esp=30
@@ -74,12 +74,10 @@ def select_Plateau():
 
 w=0
 h=0
-##Fonction d'affichage de l'interface
+##Fonction d'affichage/réglage de l'interface
 def taille_Affichage(nb_Col,esp,nb_Ligne):
     global w
     global h
-    if nb_Col >30 or nb_Ligne >30 or esp>40:
-        print("ERREUR")
     if nb_Col == 20 and nb_Ligne == 20 and esp == 20:
         w=440
         h=440
@@ -114,19 +112,22 @@ def taille_Affichage(nb_Col,esp,nb_Ligne):
 
 
 def crea_Grille(nb_Col,esp,nb_Ligne):
+    ## i et y sont défini a 20 pour positionné la grille sur le centre de l'affichage
     b=0
     i=20
     y=20
-    test=nb_Col+1
+    repeat=nb_Col+1
     for b in range(nb_Ligne+1):
         m=0
         z=0
         a=0
-        while z < test:
+        while z < repeat:
             c = zone_canvas.create_rectangle(i,20,20,y)
             i = i + esp
             z=z+1
+        ## Re-initialisation de i pour que la position revienne a son point initial
         i=20
+        ##ajout de nb_Col a y pour décalage verticale
         y=y + nb_Col
         b=b+1
 
