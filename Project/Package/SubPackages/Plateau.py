@@ -55,6 +55,7 @@ class Plateau:
         for x in range (0,len(self.tableauGeneral)):
             tab.append(self.tableauGeneral[x][1])    
         self.tableauMap = tab
+        
 
 
 
@@ -65,6 +66,7 @@ class Plateau:
             
             tab.append(self.tableauGeneral[x][2])
         self.tableauCharacter = tab
+        
         
 
     
@@ -89,6 +91,7 @@ class Plateau:
                 print (self.tableauGeneral[i][a],end =" " )
                 i+=1
             print ('')
+        print(self.totalCase)
 
 
     def formatViewArrayGeneral(self):

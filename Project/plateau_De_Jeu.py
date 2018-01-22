@@ -111,7 +111,7 @@ def taille_Affichage(nb_Col,esp,nb_Ligne):
 
 
 
-def crea_Grille(nb_Col,esp,nb_Ligne):
+def creaGrille(nb_Col,esp,nb_Ligne):
     ## i et y sont défini a 20 pour positionné la grille sur le centre de l'affichage
     b=0
     i=20
@@ -134,5 +134,5 @@ def crea_Grille(nb_Col,esp,nb_Ligne):
 select_Plateau()
 taille_Affichage(nb_Col,esp,nb_Ligne)
 zone_canvas= Canvas(Fenetre, width=w,height=h,bg=color,relief="ridge")
-crea_Grille(nb_Col,esp,nb_Ligne)
+creaGrille(nb_Col,esp,nb_Ligne)
 zone_canvas.pack()

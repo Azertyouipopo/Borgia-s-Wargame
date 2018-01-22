@@ -6,11 +6,14 @@ verif = 0
 
 #Fonction pour affichage des differents type de tableau
 
+
+
+
 def view(plateauDeJeu):
     
     #plateauDeJeu.formatViewArray(2) # Tableau Character
     print("")
-    #plateauDeJeu.formatViewArray(1) #Tableau Terrain
+    plateauDeJeu.formatViewArray(1) #Tableau Terrain
     print("")
     #plateauDeJeu.formatViewArray(0) #Tableau Coordonees
     print("")
@@ -18,12 +21,23 @@ def view(plateauDeJeu):
 
 
 #Fonction qui gére l'initialisation de notre partie
-#La fonction sera appelez que une seul fois par partie 
-def initialisation():
+#La fonction sera appelez que une seul fois par partie
+
+
+
+
     
-    nbPixelX = 50
-    nbPixelY = 50
+def initialisation():
+
+    grilleTK = PlateauDeJeuTK()
+    
+    
+    
+    nbPixelX = 820
+    nbPixelY = 220
     step = 10
+
+    
     
     plateauDeJeu = Plateau(nbPixelX,nbPixelY,step) # Instancie notre plateauDejeu
     trya = Position(plateauDeJeu,Character) # implante des soldat dans le terain
@@ -31,7 +45,13 @@ def initialisation():
     
     print(Character.blue) # affichage de l'objet et de lequipe
     
-    return 1,plateauDeJeu, # retourne 1 et notre plateauDeJeu
+    return 1,plateauDeJeu,tableauBleu # retourne 1 et notre plateauDeJeu
+
+
+
+
+
+
     
 #Fonction  gére la gestion globale de notre application 
 def gestion (verif):
@@ -44,10 +64,13 @@ def gestion (verif):
     if plateauDeJeu == None:
         print ('Erreur')
     #Instauration d'une bloucle jusqua plus de joueur enemis
-    tableauBleu[0].
+    
     
     
     view(plateauDeJeu) #appéle de notre fonction d'affichage     
+
+
+
 
 
 gestion(verif)
