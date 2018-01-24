@@ -16,8 +16,9 @@ class Character:
 
     ########################### Constructeur  #############################
     
-    def __init__(self,color):
-        
+    def __init__(self,color,plateauDeJeu):
+
+        self.plateauDeJeu = plateauDeJeu
         self.role = "Personnage"
         self.identificateur = id(self) # Inscript l'id de lobjet 
         self.lifePts = 50
@@ -26,6 +27,7 @@ class Character:
         self.strengh = 10
         self.actionPts = 1
         self.putInArmy(self,'blue')
+        
         
 
 
@@ -40,15 +42,32 @@ class Character:
         if color == 'blue': 
             self.blue.append(self)#Insert l'objet dans le tableau
 
+    def position(self,valueInt):
+        self.position = valueInt
+        
             
-    # Fonction qui insére ces coordonée de postion d'apres le tableauGeneral
-    def setPosition(self,tab):   
-        self.oldPosition = tab 
-        print(self.oldPosition)
-
+    
     #Fonction qui gére le deplacement de l'objet 
     def setMouvement(self):
         mouvement = randrange(1,5,1)
-        print(self.oldPosition)
         print(mouvement)
+        if mouvement == 4 or mouvement == 3:
+            donne =self.position[1] + 10
+            self.newPosition = [self.position[0], donne]
+
+            for i in self.plateauDeJeu.tableauGeneral :
+                if self.plateauDeJeu.tableauGeneral[2][0] == self.position :
+                    self.plateauDeJeu.tableauGeneral[2][2] = "vide"
+            creatNewPosition = 0
+            indice = 0 
+            while creatNewPosition != 1 :
+                if self.plateauDeJeu.tableauGeneral[indice][0] == self.newPosition :
+                    self.plateauDeJeu.tableauGeneral[indice][2] == self.self
+                    break
+                indice = indice + 1
+                
+                    
+            
+        
+        
         

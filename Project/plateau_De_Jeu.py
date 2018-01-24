@@ -5,6 +5,7 @@ Fenetre.title("Test")
 nb_Col=0
 nb_Ligne=0
 esp=0
+tabCord=[]
 
 
 color=input("Couleur du plateau ? (Bleu,Rouge,Vert,Jaune,Rose,Violet à écrire en anglais)")
@@ -26,7 +27,7 @@ def select_Plateau():
     global nb_Col
     global esp
     global nb_Ligne
-    if user == 0 or user > 10:
+    while user == 0 or user > 10:
         print("Veuillez séléctioner un plateau de jeu !")
         user = int(input("Choisisez un plateau de jeu parmi les 10 proposé seulement !"))
     if user == 1:
@@ -111,28 +112,58 @@ def taille_Affichage(nb_Col,esp,nb_Ligne):
 
 
 
-def creaGrille(nb_Col,esp,nb_Ligne):
+def creaGrille(nb_Col,esp,nb_Ligne,tabCord):
     ## i et y sont défini a 20 pour positionné la grille sur le centre de l'affichage
     b=0
     i=20
     y=20
-    repeat=nb_Col+1
+    repeat=nb_Col
+    tab=[]
     for b in range(nb_Ligne+1):
-        m=0
         z=0
-        a=0
-        while z < repeat:
-            c = zone_canvas.create_rectangle(i,20,20,y)
-            i = i + esp
-            z=z+1
+        while z <= repeat:
+            if y <= 220:
+                c = zone_canvas.create_rectangle(i,20,20,y)
+                tet= (i,20,20,y)
+                tab = [tet]
+                tabCord.append(tab)
+                i = i + esp
+                print(tabCord)
+                z=z+1
+            else:
+                y=20
+                
         ## Re-initialisation de i pour que la position revienne a son point initial
         i=20
         ##ajout de nb_Col a y pour décalage verticale
         y=y + nb_Col
         b=b+1
+    print(len(tabCord))
+    return(tabCord)
+
+def setPositionGrille(tabCord,nb_Col,nb_Ligne):
+    y=10
+    tabCordV=[]
+    tabCordT=[]
+    a=0
+    for b in range(nb_Ligne):
+        i=0
+        x=10
+        while i < nb_Col:
+           tabCordV= [(x,y)]
+           tabCordT.append(tabCordV)
+           x=x+10
+           i = i+1
+           tabCord[a]=tabCordT[a]
+           a=a+1
+        y=y+10
+    print(tabCord)
+    print(len(tabCordT))
+    print(len(tabCord))
 
 select_Plateau()
 taille_Affichage(nb_Col,esp,nb_Ligne)
 zone_canvas= Canvas(Fenetre, width=w,height=h,bg=color,relief="ridge")
-creaGrille(nb_Col,esp,nb_Ligne)
+creaGrille(nb_Col,esp,nb_Ligne,tabCord)
+setPositionGrille(tabCord,nb_Col,nb_Ligne)
 zone_canvas.pack()

@@ -91,7 +91,7 @@ class Plateau:
                 print (self.tableauGeneral[i][a],end =" " )
                 i+=1
             print ('')
-        print(self.totalCase)
+        
 
 
     def formatViewArrayGeneral(self):

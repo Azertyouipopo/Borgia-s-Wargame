@@ -4,6 +4,9 @@ from random import *
 verif = 0
 
 
+
+
+
 #Fonction pour affichage des differents type de tableau
 
 
@@ -11,11 +14,11 @@ verif = 0
 
 def view(plateauDeJeu):
     
-    #plateauDeJeu.formatViewArray(2) # Tableau Character
+    plateauDeJeu.formatViewArray(2) # Tableau Character
     print("")
-    plateauDeJeu.formatViewArray(1) #Tableau Terrain
+    #plateauDeJeu.formatViewArray(1) #Tableau Terrain
     print("")
-    #plateauDeJeu.formatViewArray(0) #Tableau Coordonees
+    plateauDeJeu.formatViewArray(0) #Tableau Coordonees
     print("")
     #plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
 
@@ -29,12 +32,12 @@ def view(plateauDeJeu):
     
 def initialisation():
 
-    grilleTK = PlateauDeJeuTK()
+    #grilleTK = PlateauDeJeuTK()
     
     
     
-    nbPixelX = 820
-    nbPixelY = 220
+    nbPixelX = 50
+    nbPixelY = 50
     step = 10
 
     
@@ -43,7 +46,7 @@ def initialisation():
     trya = Position(plateauDeJeu,Character) # implante des soldat dans le terain
     tableauBleu = Character.blue
     
-    print(Character.blue) # affichage de l'objet et de lequipe
+    #print(Character.blue) # affichage de l'objet et de lequipe
     
     return 1,plateauDeJeu,tableauBleu # retourne 1 et notre plateauDeJeu
 
@@ -64,6 +67,9 @@ def gestion (verif):
     if plateauDeJeu == None:
         print ('Erreur')
     #Instauration d'une bloucle jusqua plus de joueur enemis
+    tempsDeplacement = 0
+    tableauBleu[0].setMouvement()   
+    
     
     
     
