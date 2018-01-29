@@ -9,11 +9,11 @@ class Position:
 
 
         # qui insére ces coordonée de postion d'apres le tableauGeneral
-        self.plateauDeJeu.tableauGeneral[2][2] = personnage
-        self.plateauDeJeu.tableauGeneral[22][2] = personnage2
+        self.plateauDeJeu.tableauGeneral[502][2] = personnage
+        
 
         personnage.position(self.plateauDeJeu.tableauGeneral[2][0])
-        personnage2.position(self.plateauDeJeu.tableauGeneral[22][0])
+        
         
        
 

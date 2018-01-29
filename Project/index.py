@@ -18,7 +18,7 @@ def view(plateauDeJeu):
     print("")
     #plateauDeJeu.formatViewArray(1) #Tableau Terrain
     print("")
-    plateauDeJeu.formatViewArray(0) #Tableau Coordonees
+    #plateauDeJeu.formatViewArray(0) #Tableau Coordonees
     print("")
     #plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
 
@@ -32,12 +32,12 @@ def view(plateauDeJeu):
     
 def initialisation():
 
-    #grilleTK = PlateauDeJeuTK()
+    grilleTK = PlateauDeJeuTK()
     
     
     
-    nbPixelX = 50
-    nbPixelY = 50
+    nbPixelX = 100
+    nbPixelY = 100
     step = 10
 
     
@@ -67,13 +67,12 @@ def gestion (verif):
     if plateauDeJeu == None:
         print ('Erreur')
     #Instauration d'une bloucle jusqua plus de joueur enemis
-    tempsDeplacement = 0
-    tableauBleu[0].setMouvement()   
-    
-    
-    
-    
-    view(plateauDeJeu) #appéle de notre fonction d'affichage     
+    tempsDeplacement = 10
+    view(plateauDeJeu)
+
+    for i in range (0, tempsDeplacement):
+        tableauBleu[0].setMouvement()   
+        view(plateauDeJeu) #appéle de notre fonction d'affichage     
 
 
 
