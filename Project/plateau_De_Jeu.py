@@ -5,7 +5,7 @@ Fenetre.title("Test")
 nb_Col=0
 nb_Ligne=0
 tabCord=[]
-
+tabCordVOLO=[]
 
 color=input("Couleur du plateau ? (Bleu,Rouge,Vert,Jaune,Rose,Violet à écrire en anglais)")
 
@@ -15,7 +15,7 @@ def select_Plateau():
     global nb_Col
     global esp
     global nb_Ligne
-    while user == 0 or user > 5:
+    while user == 0 or user > 6:
         print("Veuillez séléctioner un plateau de jeu !")
         user = int(input("Choisisez un plateau de jeu parmi les 10 proposé seulement !"))
     if user == 1:
@@ -33,6 +33,9 @@ def select_Plateau():
     if user == 5:
         nb_Col=30
         nb_Ligne=30
+    if user == 6:
+        nb_Col=5
+        nb_Ligne=5
 
     
 
@@ -58,6 +61,9 @@ def taille_Affichage(nb_Col,nb_Ligne):
     if nb_Col == 30 and nb_Ligne == 30:
         w=680
         h=680
+    if nb_Col == 5 and nb_Ligne == 5:
+        w=440
+        h=440
 
 
 
@@ -78,49 +84,65 @@ def creaGrille(nb_Col,nb_Ligne,tabCord):
     if nb_Col == 30:
         MultiLi=MultiLi*0.70
         MultiCo=MultiCo*0.70
-    i=MultiLi
-    y=20
-    repeat=nb_Col
+    i=20
+    y=40
+    repeat=nb_Ligne
     tab=[]
-    for b in range(nb_Ligne):
+    test=20
+    bat=40
+    for b in range(repeat):
         z=0
         while z < repeat:
-            c = zone_canvas.create_rectangle(y,y,(i+20),(i+20))
-            tet= (y,y,i,i)
+            c = zone_canvas.create_rectangle(i,test,bat,y)
+            tet= (i,test,bat,y)
             tabCord.append(tet)
-            i = i + MultiLi
+            i=i+20
+            bat=bat+20
             z=z+1
         ## Re-initialisation de i pour que la position revienne a son point initial
-        i=MultiLi
+        i=20
+        test=test+20
+        bat=40
         ##ajout de nb_Col a y pour décalage verticale
-        y=y + MultiCo
+        y=y+20
         b=b+1
-    print(tabCord)
-    print('')
     return(tabCord)
 
 def setPositionGrille(tabCord,nb_Col,nb_Ligne):
-    y=10
+    x=10
     tabCordV=[]
     tabCordT=[]
     a=0
     for b in range(nb_Ligne):
         i=0
-        x=10
+        y=10
         while i < nb_Col:
            tabCordV= [(x,y)]
            tabCordT.append(tabCordV)
-           x=x+10
+           y=y+10
            i = i+1
-           tabCord[a]=tabCordT[a]
+           tabCordVOLO.append(tabCordT[a])
            a=a+1
-        y=y+10
+        x=x+10
     print (a)
     print(tabCord)
+    print(tabCordVOLO)
+    return(tabCord,tabCordVOLO)
 
+def positionJoueur(tabCord,tabCordVOLO):
+    deplacement = 1
+    x =1
+    print(tabCord[(x)])
+    if deplacement == 1:
+        zone_canvas.create_rectangle(tabCord[(x)][0],tabCord[(x)][1],tabCord[(x)][2],tabCord[(x)][3],fill='white')
+    else:
+        deplacement = 0
+
+    
 select_Plateau()
 taille_Affichage(nb_Col,nb_Ligne)
 zone_canvas= Canvas(Fenetre, width=w,height=h,bg=color,relief="ridge")
 creaGrille(nb_Col,nb_Ligne,tabCord)
 setPositionGrille(tabCord,nb_Col,nb_Ligne)
+positionJoueur(tabCord,tabCordVOLO)
 zone_canvas.pack()
