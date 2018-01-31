@@ -22,7 +22,7 @@ class Plateau:
         self.step = step # step argument represent le pas 
         self.tableauGeneral =[] # Declaration de notre aire de jeu 
         self.totalCase = (self.x//self.step) * (self.y // self.step) # Total de case present dans notre jeu
-
+        print(self.totalCase)
             
         # Boucle pour trouver coordoner
         # et construire table de jeu general 

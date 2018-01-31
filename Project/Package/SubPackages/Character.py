@@ -16,8 +16,8 @@ class Character:
 
     ########################### Constructeur  #############################
     
-    def __init__(self,color,plateauDeJeu):
-
+    def __init__(self,color,plateauDeJeu,nbPixelX):
+        
         self.plateauDeJeu = plateauDeJeu
         self.role = "Personnage"
         self.identificateur = id(self) # Inscript l'id de lobjet 
@@ -26,7 +26,8 @@ class Character:
         self.armor = 5
         self.strengh = 10
         self.actionPts = 1
-        self.putInArmy(self,'blue')
+        self.xOry = nbPixelX
+        self.putInArmy(self,color)
         
         
 
@@ -56,35 +57,82 @@ class Character:
         print(mouvement)
         compteur= 0
 
-  
-
-        valeurDeVerif = self.verifCharacterNear(mouvement)
-        if valeurDeVerif == 1:
+        valeurBloquer = self.verifBloquerCharacter(mouvement)
         
-         # Nous recherchons la position de notre personage et la remplaçon par une case vide 
-            for i in self.plateauDeJeu.tableauGeneral :
-                compteur += 1
-                verificationPresence = 0
+        if valeurBloquer == 0:
+              
 
-                if self.plateauDeJeu.tableauGeneral[compteur][0] == self.position:
-                    self.position = self.newPosition              
-                    temp = self.plateauDeJeu.tableauGeneral[compteur][2]
-                    self.plateauDeJeu.tableauGeneral[compteur][2] = "vide"
-                    break
-
+            valeurDeVerif = self.verifCharacterNear(mouvement)
+            if valeurDeVerif == 1:
             
-            creatNewPosition = 0
-            indice = 0
+             # Nous recherchons la position de notre personage et la remplaçon par une case vide 
+                for i in self.plateauDeJeu.tableauGeneral :
+                    
+                    verificationPresence = 0
+                    print(self.plateauDeJeu.tableauGeneral[compteur][0])
+                    print("*********",self.position)
+                    print(compteur)
+                    if self.plateauDeJeu.tableauGeneral[compteur][0] == self.position:
+                        self.position = self.newPosition              
+                        temp = self.plateauDeJeu.tableauGeneral[compteur][2]
+                        self.plateauDeJeu.tableauGeneral[compteur][2] = "vide"
+                        break
+                    compteur += 1
 
-            #Nous recherchons un la nouvelle position et nous remplaçon la case vide par l'objet 
-            while creatNewPosition != 1 :
-                if self.plateauDeJeu.tableauGeneral[indice][0] == self.newPosition :
-                    self.plateauDeJeu.tableauGeneral[indice][2] = temp
-                    print(self.position)
-                    break
-                indice = indice + 1
+                
+                creatNewPosition = 0
+                indice = 0
+
+                #Nous recherchons un la nouvelle position et nous remplaçon la case vide par l'objet 
+                while creatNewPosition != 1 :
+                    
+                    if self.plateauDeJeu.tableauGeneral[indice][0] == self.newPosition :
+                        self.plateauDeJeu.tableauGeneral[indice][2] = temp
+                        print(self.position)
+                        break
+                    indice = indice + 1
         
         
+    def verifBloquerCharacter(self,mouvement):
+    
+        
+        if mouvement == 1 :
+            
+            if self.position[1] != 10:
+                return 0
+
+            else :
+                return 1
+            
+    
+        if mouvement == 2 :
+            
+            if self.position[0] != 10:
+                return 0
+
+            else :
+                return 1
+            
+        if mouvement == 3 :
+            
+            if self.position[0] != self.xOry:
+                return 0
+
+            else :
+                return 1
+        
+        if mouvement == 4 :
+            
+            if self.position[1] != self.xOry:
+                return 0
+
+            else :
+                return 1
+            
+            
+
+   
+
 
                     
                     
@@ -110,12 +158,13 @@ class Character:
             compteur = 0
           
             for i in self.plateauDeJeu.tableauGeneral:
-                compteur +=1
+                
                 if  self.plateauDeJeu.tableauGeneral[compteur][0] == self.newPosition :
                     if self.plateauDeJeu.tableauGeneral[compteur][2] == "vide":
                         return 1
                     if self.plateauDeJeu.tableauGeneral[compteur][2] != "vide":
                         return 0
+                compteur +=1
 
         if mouvement == 3 :
             
@@ -124,12 +173,13 @@ class Character:
             compteur = 0
           
             for i in self.plateauDeJeu.tableauGeneral:
-                compteur +=1
+                
                 if  self.plateauDeJeu.tableauGeneral[compteur][0] == self.newPosition :
                     if self.plateauDeJeu.tableauGeneral[compteur][2] == "vide":
                         return 1
                     if self.plateauDeJeu.tableauGeneral[compteur][2] != "vide":
                         return 0
+                compteur +=1
 
         if mouvement == 4 :
             newCoordone =self.position[1] + 10  # si 4 alors  [x, y + 10] 

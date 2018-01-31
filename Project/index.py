@@ -14,7 +14,7 @@ verif = 0
 
 def view(plateauDeJeu):
     
-    #plateauDeJeu.formatViewArray(2) # Tableau Character
+    plateauDeJeu.formatViewArray(2) # Tableau Character
     print("")
     #plateauDeJeu.formatViewArray(1) #Tableau Terrain
     print("")
@@ -32,18 +32,17 @@ def view(plateauDeJeu):
     
 def initialisation():
 
-    grilleTK = PlateauDeJeuTK()
-    
-    
-    
-    nbPixelX = grilleTK.getTotalCaseTK()
-    nbPixelY = grilleTK.getTotalCaseTK()
+    #grilleTK = PlateauDeJeuTK()
+    #nbPixelX = grilleTK.getTotalCaseTK()
+    #nbPixelY = grilleTK.getTotalCaseTK()
+    nbPixelX = 50
+    nbPixelY = 50
     step = 10
 
     
     
     plateauDeJeu = Plateau(nbPixelX,nbPixelY,step) # Instancie notre plateauDejeu
-    trya = Position(plateauDeJeu,Character) # implante des soldat dans le terain
+    trya = Position(plateauDeJeu,Character,nbPixelX) # implante des soldat dans le terain
     tableauBleu = Character.blue
     
     #print(Character.blue) # affichage de l'objet et de lequipe
@@ -67,12 +66,15 @@ def gestion (verif):
     if plateauDeJeu == None:
         print ('Erreur')
     #Instauration d'une bloucle jusqua plus de joueur enemis
-    tempsDeplacement = 2
+    
+    tempsDeplacement = 100
     view(plateauDeJeu)
-
+    
     for i in range (0, tempsDeplacement):
-        tableauBleu[0].setMouvement()   
-        view(plateauDeJeu) #appéle de notre fonction d'affichage     
+        
+        for b in range(0, len(tableauBleu)):
+            tableauBleu[b].setMouvement()   
+            view(plateauDeJeu) #appéle de notre fonction d'affichage     
 
 
 

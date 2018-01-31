@@ -56,8 +56,8 @@ def taille_Affichage(nb_Col,nb_Ligne):
         w=660
         h=660
     if nb_Col == 30 and nb_Ligne == 30:
-        w=730
-        h=1000
+        w=680
+        h=680
 
 
 
@@ -76,8 +76,8 @@ def creaGrille(nb_Col,nb_Ligne,tabCord):
         MultiLi=MultiLi*1.5
         MultiCo=MultiCo*1.5
     if nb_Col == 30:
-        MultiLi=MultiLi*0.75
-        MultiCo=MultiCo*0.75
+        MultiLi=MultiLi*0.70
+        MultiCo=MultiCo*0.70
     i=MultiLi
     y=20
     repeat=nb_Col
