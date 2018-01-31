@@ -46,18 +46,20 @@ class PlateauDeJeuTK:
         if self.user == 2:
             self.nbCol=20
             self.nbLigne=20
-            self.totalCaseTK = 400
+            self.totalCaseTK = 200
         if self.user == 3:
             self.nbCol=15
             self.nbLigne=15
-            self.totalCaseTK = 225
+            self.totalCaseTK = 150
 
         if self.user == 4:
             self.nbCol=25
             self.nbLigne=25
+            self.totalCaseTK = 250
         if self.user == 5:
             self.nbCol=30
             self.nbLigne=30
+            self.totalCaseTK = 300
         
         
     def setTailleScreen(self):

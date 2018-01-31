@@ -115,6 +115,7 @@ def setPositionGrille(tabCord,nb_Col,nb_Ligne):
            tabCord[a]=tabCordT[a]
            a=a+1
         y=y+10
+    print (a)
     print(tabCord)
 
 select_Plateau()

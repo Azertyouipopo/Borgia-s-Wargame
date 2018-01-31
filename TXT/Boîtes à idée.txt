@@ -1,4 +1,4 @@
-Optimisateur de WarGame.
+﻿Optimisateur de WarGame.
 
 Redéfinir les points d'armures pour qu'elle divise les dégats reçus au lieu d'avoir une bar d'armure en plus de la vie.
 
@@ -109,3 +109,8 @@ Définitions des classe :
    - 2 Pts
   - Vitesse Haute
    - 4 PD
+
+Déplacements 
+
+Les déplacements se font par une unité de chaque côté.
+
