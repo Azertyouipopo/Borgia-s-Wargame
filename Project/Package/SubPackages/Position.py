@@ -9,7 +9,7 @@ class Position:
 
 
         # qui insére ces coordonée de postion d'apres le tableauGeneral
-        self.plateauDeJeu.tableauGeneral[502][2] = personnage
+        self.plateauDeJeu.tableauGeneral[2][2] = personnage
         
 
         personnage.position(self.plateauDeJeu.tableauGeneral[2][0])

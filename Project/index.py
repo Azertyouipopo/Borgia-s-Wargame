@@ -14,11 +14,11 @@ verif = 0
 
 def view(plateauDeJeu):
     
-    plateauDeJeu.formatViewArray(2) # Tableau Character
+    #plateauDeJeu.formatViewArray(2) # Tableau Character
     print("")
     #plateauDeJeu.formatViewArray(1) #Tableau Terrain
     print("")
-    #plateauDeJeu.formatViewArray(0) #Tableau Coordonees
+    plateauDeJeu.formatViewArray(0) #Tableau Coordonees
     print("")
     #plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
 
@@ -36,8 +36,8 @@ def initialisation():
     
     
     
-    nbPixelX = 100
-    nbPixelY = 100
+    nbPixelX = grilleTK.getTotalCaseTK()
+    nbPixelY = grilleTK.getTotalCaseTK()
     step = 10
 
     
@@ -67,7 +67,7 @@ def gestion (verif):
     if plateauDeJeu == None:
         print ('Erreur')
     #Instauration d'une bloucle jusqua plus de joueur enemis
-    tempsDeplacement = 10
+    tempsDeplacement = 2
     view(plateauDeJeu)
 
     for i in range (0, tempsDeplacement):

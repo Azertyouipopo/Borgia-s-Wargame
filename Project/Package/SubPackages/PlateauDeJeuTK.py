@@ -16,7 +16,12 @@ class PlateauDeJeuTK:
         self.setCreateGrille()
         self.setPositionGrille()
         self.settest()
+
         
+    ####### Geter #######
+
+    def getTotalCaseTK(self):
+        return self.totalCaseTK
 
         
     ####### Seter #######
@@ -37,12 +42,16 @@ class PlateauDeJeuTK:
         if self.user == 1:
             self.nbCol=10
             self.nbLigne=10
+            self.totalCaseTK = 100
         if self.user == 2:
             self.nbCol=20
             self.nbLigne=20
+            self.totalCaseTK = 400
         if self.user == 3:
             self.nbCol=15
             self.nbLigne=15
+            self.totalCaseTK = 225
+
         if self.user == 4:
             self.nbCol=25
             self.nbLigne=25
@@ -75,8 +84,10 @@ class PlateauDeJeuTK:
 
     def setCreateGrille(self):
             ## i et y sont défini a 20 pour positionné la grille sur le centre de l'affichage
+            
         MultiLi=self.nbLigne
         MultiCo=self.nbCol
+        
         if self.nbCol == 10:
             MultiLi=MultiLi*4
             MultiCo=MultiCo*4
@@ -89,23 +100,29 @@ class PlateauDeJeuTK:
         if self.nbCol == 30:
             MultiLi=MultiLi*0.75
             MultiCo=MultiCo*0.75
+            
         i=MultiLi
         y=20
         repeat=self.nbCol
         tab=[]
+        
         for b in range(self.nbLigne):
             z=0
+            
             while z < repeat:
                 c = self.zoneCanvas.create_rectangle(y,y,(i+20),(i+20))
                 Coord=(y,y,i,i)
                 self.tabCord.append(Coord)
                 i = i + MultiLi
                 z=z+1
+                
             ## Re-initialisation de i pour que la position revienne a son point initial
             i=MultiLi
+            
             ##ajout de nb_Col a y pour décalage verticale
             y=y + MultiCo
             b=b+1
+            
         return(self.tabCord)
             
     def settest(self):
@@ -127,9 +144,9 @@ class PlateauDeJeuTK:
                self.tabCord[a]=tabCordT[a]
                a=a+1
             y=y+10
+        print((b+1)*(1+i))
         print(self.tabCord)
 
-    ####### Geter #######
 
         
 
