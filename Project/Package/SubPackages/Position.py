@@ -4,13 +4,13 @@ class Position:
     def __init__(self,plateauDeJeu,Character,nbPixelX):
         
         self.plateauDeJeu = plateauDeJeu
-        personnage = Character('blue',plateauDeJeu,nbPixelX)
-        personnage2 = Character('blue',plateauDeJeu,nbPixelX)
+        personnage = Character('blue',plateauDeJeu,nbPixelX,"personnage")
+        personnage2 = Character('red',plateauDeJeu,nbPixelX,"personnage2")
 
 
         # qui insére ces coordonée de postion d'apres le tableauGeneral
         self.plateauDeJeu.tableauGeneral[2][2] = personnage
-        self.plateauDeJeu.tableauGeneral[20][2] = personnage
+        self.plateauDeJeu.tableauGeneral[20][2] = personnage2
      
         
 

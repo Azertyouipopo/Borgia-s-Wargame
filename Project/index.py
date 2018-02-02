@@ -44,39 +44,66 @@ def initialisation():
     plateauDeJeu = Plateau(nbPixelX,nbPixelY,step) # Instancie notre plateauDejeu
     trya = Position(plateauDeJeu,Character,nbPixelX) # implante des soldat dans le terain
     tableauBleu = Character.blue
+    tableauRed = Character.red
     
     #print(Character.blue) # affichage de l'objet et de lequipe
     
-    return 1,plateauDeJeu,tableauBleu # retourne 1 et notre plateauDeJeu
+    return 1,plateauDeJeu,tableauBleu,tableauRed # retourne 1 et notre plateauDeJeu
 
 
 
+def mouvementBlueTeam(indiceB,tableauBleu):
+    tableauBleu[indiceB].setMouvement()
+    indiceB +=1
 
+    if indiceB == len(tableauBleu):
+        return -1
+    
+    return indiceB
 
+def mouvementRedTeam(indiceR,tableauBleu):
+    tableauBleu[indiceR].setMouvement()
+    indiceR +=1
+
+    if indiceR == len(tableauBleu):
+        return -1
+    
+    return indiceR
 
     
 #Fonction  gére la gestion globale de notre application 
 def gestion (verif):
-
-
+    
+    indiceB = 0
+    indiceR = 0
     # IF verifier que une seulf par partie  
     if verif == 0 :
-        verif,plateauDeJeu,tableauBleu = initialisation() # apppéle notre fonction d'initialisation
+        verif,plateauDeJeu,tableauBleu,tableauRed = initialisation() # apppéle notre fonction d'initialisation
         
     if plateauDeJeu == None:
         print ('Erreur')
     #Instauration d'une bloucle jusqua plus de joueur enemis
     
-    tempsDeplacement = 100
+    tempsDeplacement = 40
     view(plateauDeJeu)
     
     for i in range (0, tempsDeplacement):
         
-        for b in range(0, len(tableauBleu)):
-            tableauBleu[b].setMouvement()   
-            view(plateauDeJeu) #appéle de notre fonction d'affichage     
+        if indiceB != 1:
+            
+            indiceB = mouvementBlueTeam(indiceB,tableauBleu)
+            
 
+        if indiceR != 1:
+            
+           indiceR = mouvementRedTeam(indiceR,tableauRed)
+        view(plateauDeJeu) #appéle de notre fonction d'affichage
 
+           
+            
+
+def test():
+    print("sqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
 
 
 
