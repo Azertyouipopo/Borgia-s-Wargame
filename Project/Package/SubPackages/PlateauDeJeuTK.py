@@ -145,17 +145,12 @@ class PlateauDeJeuTK:
 
     def setTabCharacter(self,array):
         self.tableauCharacter=array
-<<<<<<< HEAD
         while joueur < 4:
             i=0
             if self.tableauCharacter[i] == 'vide':
                 i=i+1
             else:
                 print(self.tableauCharacter[i])
-            
-=======
-        #print(self.tableauCharacter)
->>>>>>> 752b99f8ff217dab678d8d31d9bbd0c34048f24a
 
 
 
