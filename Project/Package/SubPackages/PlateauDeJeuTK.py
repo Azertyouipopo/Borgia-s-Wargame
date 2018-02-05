@@ -9,6 +9,7 @@ class PlateauDeJeuTK:
         self.nbCol = 0
         self.nbLigne = 0
         self.tabCord = []
+        self.tabCordVOLO = []
         self.setColor()
         self.setPlateau()
         self.setTailleScreen()
@@ -16,6 +17,7 @@ class PlateauDeJeuTK:
         self.setCreateGrille()
         self.setPositionGrille()
         self.settest()
+        self.positionJoueur()
 
         
     ####### Geter #######
@@ -98,54 +100,65 @@ class PlateauDeJeuTK:
             MultiLi=MultiLi*1.5
             MultiCo=MultiCo*1.5
         if self.nbCol == 30:
-            MultiLi=MultiLi*0.75
-            MultiCo=MultiCo*0.75
+            MultiLi=MultiLi*0.70
+            MultiCo=MultiCo*0.70
             
-        i=MultiLi
-        y=20
-        repeat=self.nbCol
+        i=20
+        y=40
+        repeat=self.nbLigne
         tab=[]
-        
-        for b in range(self.nbLigne):
+        test = 20
+        bat=40
+        for b in range(repeat):
             z=0
-            
             while z < repeat:
-                c = self.zoneCanvas.create_rectangle(y,y,(i+20),(i+20))
-                Coord=(y,y,i,i)
+                c = self.zoneCanvas.create_rectangle(i,test,bat,y)
+                Coord=(i,test,bat,y)
                 self.tabCord.append(Coord)
-                i = i + MultiLi
+                i = i + 20
                 z=z+1
                 
             ## Re-initialisation de i pour que la position revienne a son point initial
-            i=MultiLi
-            
+            i=20
             ##ajout de nb_Col a y pour décalage verticale
-            y=y + MultiCo
+            test=test+20
+            bat=40
+            y=y+20
             b=b+1
-            
         return(self.tabCord)
             
     def settest(self):
         self.zoneCanvas.pack()
 
     def setPositionGrille(self):
-        y=10
+        x=10
         tabCordV=[]
         tabCordT=[]
         a=0
         for b in range(self.nbLigne):
             i=0
-            x=10
+            y=10
             while i < self.nbCol:
                tabCordV= [(x,y)]
                tabCordT.append(tabCordV)
-               x=x+10
+               y=y+10
                i = i+1
-               self.tabCord[a]=tabCordT[a]
+               self.tabCordVOLO.append(tabCordT[a])
                a=a+1
-            y=y+10
-        print((b+1)*(1+i))
+            x=x+10
+        print(a)
         print(self.tabCord)
+        print(self.tabCordVOLO)
+        return (tabCord,tabCordVOLO)
+
+    def positionJoueur(tabCord,tabCordVOLO):
+        deplacement = 1
+        x = 1
+        print(tabCord[(x)])
+        if deplacement == 1:
+            zone_canvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
+        else:
+            deplacement = 0
 
 
         
