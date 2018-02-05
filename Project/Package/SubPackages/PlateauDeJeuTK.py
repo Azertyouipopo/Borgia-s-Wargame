@@ -143,14 +143,14 @@ class PlateauDeJeuTK:
             self.zoneCanvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
 
 
-    def setTabCharacter(self,array):
-        self.tableauCharacter=array
-        while joueur < 4:
-            i=0
-            if self.tableauCharacter[i] == 'vide':
-                i=i+1
-            else:
-                print(self.tableauCharacter[i])
+##    def setTabCharacter(self,array):
+##        self.tableauCharacter=array
+##        while joueur < 4:
+##            i=0
+##            if self.tableauCharacter[i] == 'vide':
+##                i=i+1
+##            else:
+##                print(self.tableauCharacter[i])
 
 
 

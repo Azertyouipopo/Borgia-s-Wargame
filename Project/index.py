@@ -68,7 +68,7 @@ class Index:
         self.view(self.plateauDeJeu)
         
         for i in range (0, tempsDeplacement):
-            self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
+            #self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
         print(self.tableauBleu)
