@@ -16,8 +16,8 @@ class Character:
 
     ########################### Constructeur  #############################
     
-    def __init__(self,color,plateauDeJeu,nbPixelX,name):
-
+    def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
+        self.Index = index
         self.name = name 
         self.plateauDeJeu = plateauDeJeu
         self.role = "Personnage"
@@ -50,7 +50,7 @@ class Character:
             self.red.append(self)
             
 
-    def position(self,valueInt):
+    def setPosition(self,valueInt):
         self.position = valueInt
         
 
@@ -60,17 +60,25 @@ class Character:
     
     #Fonction qui gére le deplacement de l'objet 
     def setMouvement(self):
+
+        
+        
         objPersonnage ="obj"
         enemieNear,objPersonnage = self.verifEnemieNear()
+        
         if enemieNear == 1:
+            
             mouvement = randrange(1,5,1)# Genere un nb aleatoire pour le deplacement
             valeurBloquer = self.verifBloquerCharacter(mouvement)
-            print(mouvement)
+            
             compteur= 0
+            
+
+            
             if valeurBloquer == 0:
-                  
                 
                 valeurDeVerif = self.verifCharacterNear(mouvement)
+                
                 
                 if valeurDeVerif == 1:
                 
@@ -80,10 +88,13 @@ class Character:
                         verificationPresence = 0
                         
                         if self.plateauDeJeu.tableauGeneral[compteur][0] == self.position:
-                            self.position = self.newPosition              
+                            
+                            self.setPosition(self.newPosition)             
                             temp = self.plateauDeJeu.tableauGeneral[compteur][2]
                             self.plateauDeJeu.tableauGeneral[compteur][2] = "vide"
                             break
+
+                        
                         compteur += 1
 
                     
@@ -113,19 +124,15 @@ class Character:
     def degatSubit(self,strengh):
         if self.lifePts <= 0 :
            self.mortPersonnage()
+           return 0
         self.lifePts = self.lifePts - strengh
         print(self.lifePts," vie ")
         if self.lifePts <= 0 :
            self.mortPersonnage()
+           return 0
            
     def mortPersonnage(self):
-        compteur = 0
-        for i in self.plateauDeJeu.tableauGeneral:
-            if  self.plateauDeJeu.tableauGeneral[compteur][0] == self.position :
-                self.plateauDeJeu.tableauGeneral[compteur][2] = "vide"
-                del (self.name)
-            compteur +=1
-
+        self.Index.mort(self)
 
                 
     
@@ -302,7 +309,7 @@ class Character:
                         return 0
                 compteur +=1
                 
-            
+           
         
         
         
