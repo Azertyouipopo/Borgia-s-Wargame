@@ -144,6 +144,7 @@ class PlateauDeJeuTK:
 
     def setTabCharacter(self,array):
         self.tableauCharacter=array
+        print(self.tableauCharacter)
 
 
 

@@ -30,7 +30,7 @@ class Index:
 
     def view(self,plateauDeJeu):
         
-        self.plateauDeJeu.formatViewArray(2) # Tableau Character
+        #self.plateauDeJeu.formatViewArray(2) # Tableau Character
         print("")
         #self.plateauDeJeu.formatViewArray(1) #Tableau Terrain
         print("")
@@ -64,11 +64,11 @@ class Index:
     #Fonction  gére la gestion globale de notre application 
     def gestionDePartie (self):
         
-        tempsDeplacement = 80
+        tempsDeplacement = 50
         self.view(self.plateauDeJeu)
         
         for i in range (0, tempsDeplacement):
-            self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauCharacter())
+            self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
         print(self.tableauBleu)
