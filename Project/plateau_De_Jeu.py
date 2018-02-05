@@ -47,43 +47,26 @@ def taille_Affichage(nb_Col,nb_Ligne):
     global w
     global h
     if nb_Col == 10 and nb_Ligne == 10:
+        w=240
+        h=240
+    if nb_Col == 20 and nb_Ligne == 20:
         w=440
         h=440
-    if nb_Col == 20 and nb_Ligne == 20:
-        w=640
-        h=640
     if nb_Col == 15 and nb_Ligne == 15:
-        w=480
-        h=480
+        w=280
+        h=280
     if nb_Col == 25 and nb_Ligne == 25:
+        w=460
+        h=460
+    if nb_Col == 30 and nb_Ligne == 30:
         w=660
         h=660
-    if nb_Col == 30 and nb_Ligne == 30:
-        w=680
-        h=680
-    if nb_Col == 5 and nb_Ligne == 5:
-        w=440
-        h=440
 
 
 
 def creaGrille(nb_Col,nb_Ligne,tabCord):
     ## i et y sont défini a 20 pour positionné la grille sur le centre de l'affichage
     b=0
-    MultiLi=nb_Ligne
-    MultiCo=nb_Col
-    if nb_Col == 10:
-        MultiLi=MultiLi*4
-        MultiCo=MultiCo*4
-    if nb_Col == 15:
-        MultiLi=MultiLi*2
-        MultiCo=MultiCo*2
-    if nb_Col == 20:
-        MultiLi=MultiLi*1.5
-        MultiCo=MultiCo*1.5
-    if nb_Col == 30:
-        MultiLi=MultiLi*0.70
-        MultiCo=MultiCo*0.70
     i=20
     y=40
     repeat=nb_Ligne
@@ -96,15 +79,15 @@ def creaGrille(nb_Col,nb_Ligne,tabCord):
             c = zone_canvas.create_rectangle(i,test,bat,y)
             tet= (i,test,bat,y)
             tabCord.append(tet)
-            i=i+20
-            bat=bat+20
+            i=(i+20) 
+            bat=(bat+20)
             z=z+1
         ## Re-initialisation de i pour que la position revienne a son point initial
         i=20
-        test=test+20
+        test=(test+20)
         bat=40
         ##ajout de nb_Col a y pour décalage verticale
-        y=y+20
+        y=(y+20)
         b=b+1
     return(tabCord)
 

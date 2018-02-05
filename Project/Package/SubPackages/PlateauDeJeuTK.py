@@ -65,20 +65,20 @@ class PlateauDeJeuTK:
     def setTailleScreen(self):
         
         if self.nbCol == 10 and self.nbLigne == 10:
+            self.w=240
+            self.h=240
+        if self.nbCol == 20 and self.nbLigne == 20:
             self.w=440
             self.h=440
-        if self.nbCol == 20 and self.nbLigne == 20:
-            self.w=640
-            self.h=640
         if self.nbCol == 15 and self.nbLigne == 15:
-            self.w=480
-            self.h=480
+            self.w=280
+            self.h=280
         if self.nbCol == 25 and self.nbLigne == 25:
+            self.w=460
+            self.h=460
+        if self.nbCol == 30 and self.nbLigne == 30:
             self.w=660
             self.h=660
-        if self.nbCol == 30 and self.nbLigne == 30:
-            self.w=730
-            self.h=1000
 
     def setZoneCanvas(self):
         self.zoneCanvas = Canvas(self.fenetre, width = self.w, height = self.h ,bg = self.color, relief="ridge")
@@ -86,23 +86,6 @@ class PlateauDeJeuTK:
 
     def setCreateGrille(self):
             ## i et y sont défini a 20 pour positionné la grille sur le centre de l'affichage
-            
-        MultiLi=self.nbLigne
-        MultiCo=self.nbCol
-        
-        if self.nbCol == 10:
-            MultiLi=MultiLi*4
-            MultiCo=MultiCo*4
-        if self.nbCol == 15:
-            MultiLi=MultiLi*2
-            MultiCo=MultiCo*2
-        if self.nbCol == 20:
-            MultiLi=MultiLi*1.5
-            MultiCo=MultiCo*1.5
-        if self.nbCol == 30:
-            MultiLi=MultiLi*0.70
-            MultiCo=MultiCo*0.70
-            
         i=20
         y=40
         repeat=self.nbLigne
