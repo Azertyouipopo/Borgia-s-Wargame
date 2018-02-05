@@ -319,7 +319,90 @@ class Character:
                         return 0
                 compteur +=1
                 
-           
+
+####################################################################################################################################################################
+###################################################################### Class Fantassin #############################################################################
+####################################################################################################################################################################
         
+class Fantassin(Character):
+    def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
+        super().__init__(self,color,plateauDeJeu,nbPixelX,name,index)
+        self.Index = index
+        self.name = name 
+        self.plateauDeJeu = plateauDeJeu
+        self.role = "Personnage"    
+        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.identificateur = id(self) # Inscript l'id de lobjet 
+        self.lifePts = 8
+        self.armor = 0
+        self.strengh = 1
+        self.xOry = nbPixelX
+        self.couleur = color
+        self.putInArmy(self,color)
+
+
+####################################################################################################################################################################
+###################################################################### Class Bretteur  #############################################################################
+####################################################################################################################################################################
         
+class Bretteur(Character):
+    def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
+        super().__init__(self,color,plateauDeJeu,nbPixelX,name,index)
+        self.Index = index
+        self.name = name 
+        self.plateauDeJeu = plateauDeJeu
+        self.role = "Personnage"
+        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.identificateur = id(self) # Inscript l'id de lobjet 
+        self.lifePts = 15
+        self.armor = 5
+        self.strengh = 4
+        self.xOry = nbPixelX
+        self.couleur = color
+        self.putInArmy(self,color)
+
+
+
+####################################################################################################################################################################
+###################################################################### Class Chevalier #############################################################################
+####################################################################################################################################################################
         
+class Chevalier(Character):
+    def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
+        super().__init__(self,color,plateauDeJeu,nbPixelX,name,index)
+        self.Index = index
+        self.name = name 
+        self.plateauDeJeu = plateauDeJeu
+        self.role = "Personnage"
+        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.identificateur = id(self) # Inscript l'id de lobjet 
+        self.lifePts = 15
+        self.armor = 8
+        self.strengh = 4
+        self.xOry = nbPixelX
+        self.couleur = color
+        self.putInArmy(self,color)
+
+
+
+####################################################################################################################################################################
+###################################################################### Class Fantassin #############################################################################
+####################################################################################################################################################################
+        
+class Archer(Character):
+    def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
+        super().__init__(self,color,plateauDeJeu,nbPixelX,name,index)
+        self.Index = index
+        self.name = name 
+        self.plateauDeJeu = plateauDeJeu
+        self.role = "Personnage"
+        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.identificateur = id(self) # Inscript l'id de lobjet 
+        self.lifePts = 5
+        self.armor = 0
+        self.strengh = 2
+        self.xOry = nbPixelX
+        self.couleur = color
+        self.putInArmy(self,color)
+
+
