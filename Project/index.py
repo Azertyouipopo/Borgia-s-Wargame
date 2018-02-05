@@ -36,7 +36,7 @@ class Index:
         print("")
         #self.plateauDeJeu.formatViewArray(0) #Tableau Coordonees
         print("")
-        #self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
+        self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
 
 
 
@@ -68,7 +68,7 @@ class Index:
         self.view(self.plateauDeJeu)
         
         for i in range (0, tempsDeplacement):
-            
+            self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauCharacter())
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
         print(self.tableauBleu)

@@ -112,8 +112,12 @@ class Plateau:
     def getTableauGeneral(self):
         return self.tableauGeneral
 
+    def getTableauCharacter(self):
+        return self.tableauCharacter
+
     def getTotalCase(self):
         return self.totalCase
+    
     
     ########################### Seteur  #############################
 
