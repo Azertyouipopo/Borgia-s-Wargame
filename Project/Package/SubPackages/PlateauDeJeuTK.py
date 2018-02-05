@@ -33,7 +33,7 @@ class PlateauDeJeuTK:
 
     def setPlateau(self):
         
-        print("Il ya 10 plateaux\n"
+        print("Il ya 5 plateaux\n"
           "Plateau 1: 100 Case\n"
           "Plateau 2: 400Case\n"
           "Plateau 3: 225 Case\n"
@@ -135,16 +135,15 @@ class PlateauDeJeuTK:
         return (self.tabCord,self.tabCordVOLO)
 
     def positionJoueur(self):
-        deplacement = 1
+        player = 0
         x = 1
         print(self.tabCord[(x)])
-        if deplacement == 1:
+        if player == 1:
             self.zoneCanvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
-        else:
-            deplacement = 0
 
 
-        
+    def setTabCharacter(self,array):
+        self.tableauCharacter=array
 
 
 
