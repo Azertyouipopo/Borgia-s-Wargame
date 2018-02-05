@@ -154,7 +154,7 @@ class PlateauDeJeuTK:
     def positionJoueur(self):
         deplacement = 1
         x = 1
-        print(tabCord[(x)])
+        print(self.tabCord[(x)])
         if deplacement == 1:
             zone_canvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
         else:
