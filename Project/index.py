@@ -88,7 +88,7 @@ class Index:
             for i in range(0,len(self.tableauRed)):
                 print(i)
                 if self.tableauRed[i] == PersonnageMort:
-                    del self.tableauRed[i]
+                    self.tableauRed[i] = "mort"
                     print(self.tableauRed,"Jouer rouge mort")
                     break
                     
