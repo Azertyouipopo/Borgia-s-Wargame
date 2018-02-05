@@ -11,8 +11,8 @@ class Index:
         self.plateauDeJeuTK = PlateauDeJeuTK()
         
         ### Initialisation des attribut lambda ###
-        self.nbPixelX = 50
-        self.nbPixelY = 50
+        self.nbPixelX = self.plateauDeJeuTK.totalCaseTK
+        self.nbPixelY = self.plateauDeJeuTK.totalCaseTK
         self.indiceB = 0
         self.indiceR = 0
         self.step = 10
@@ -30,13 +30,13 @@ class Index:
 
     def view(self,plateauDeJeu):
         
-        #self.plateauDeJeu.formatViewArray(2) # Tableau Character
+        self.plateauDeJeu.formatViewArray(2) # Tableau Character
         print("")
         #self.plateauDeJeu.formatViewArray(1) #Tableau Terrain
         print("")
         #self.plateauDeJeu.formatViewArray(0) #Tableau Coordonees
         print("")
-        self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
+        #self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
 
 
 
