@@ -149,9 +149,9 @@ class PlateauDeJeuTK:
         print(a)
         print(self.tabCord)
         print(self.tabCordVOLO)
-        return (tabCord,tabCordVOLO)
+        return (self.tabCord,self.tabCordVOLO)
 
-    def positionJoueur(tabCord,tabCordVOLO):
+    def positionJoueur(self):
         deplacement = 1
         x = 1
         print(tabCord[(x)])
