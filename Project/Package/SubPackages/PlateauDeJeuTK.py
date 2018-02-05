@@ -117,7 +117,7 @@ class PlateauDeJeuTK:
                 self.tabCord.append(Coord)
                 i = i + 20
                 z=z+1
-                
+                bat = bat + 20
             ## Re-initialisation de i pour que la position revienne a son point initial
             i=20
             ##ajout de nb_Col a y pour décalage verticale
@@ -156,7 +156,7 @@ class PlateauDeJeuTK:
         x = 1
         print(self.tabCord[(x)])
         if deplacement == 1:
-            zone_canvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
+            self.zoneCanvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
         else:
             deplacement = 0
 

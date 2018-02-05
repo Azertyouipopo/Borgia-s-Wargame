@@ -1,6 +1,9 @@
 
 from random import *
 
+
+
+
 class Character:
     
 ##     Classe définissant une personne caractérisée par :

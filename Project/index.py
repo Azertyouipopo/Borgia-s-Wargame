@@ -7,6 +7,8 @@ class Index:
     verif = 0 
     
     def __init__ (self) :
+
+        self.plateauDeJeuTK = PlateauDeJeuTK()
         
         ### Initialisation des attribut lambda ###
         self.nbPixelX = 50
@@ -61,7 +63,7 @@ class Index:
     #Fonction  gére la gestion globale de notre application 
     def gestionDePartie (self):
         
-        tempsDeplacement = 50
+        tempsDeplacement = 5
         self.view(self.plateauDeJeu)
         
         for i in range (0, tempsDeplacement):
@@ -85,6 +87,7 @@ class Index:
                 print(i)
                 if self.tableauRed[i] == PersonnageMort:
                     del self.tableauRed[i]
+                    print(self.tableauRed,"Jouer rouge mort")
                     break
                     
         if PersonnageMort.couleur == "blue":
@@ -92,6 +95,7 @@ class Index:
                 if self.tableauBleu[i] == PersonnageMort:
                     print("Suppresion d'un joeur d'equipe bleu ")
                     del self.tableauBleu[i]
+                    print(self.tableauBleu,"Jouer bleu mort")
                     break
         
 
