@@ -36,7 +36,7 @@ class Index:
         print("")
         #self.plateauDeJeu.formatViewArray(0) #Tableau Coordonees
         print("")
-        self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
+        #self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
 
 
 
@@ -51,11 +51,12 @@ class Index:
                 tailleMax = len(self.tableauRed) - 1
                 
                 if x <= len(self.tableauBleu) - 1 :
-
-                    vieOrMort = self.tableauBleu[x].setMouvement()
+                    if self.tableauBleu[x] != "mort":
+                        vieOrMort = self.tableauBleu[x].setMouvement()
                     
-                if x <= tailleMax:    
-                    self.tableauRed[x].setMouvement()
+                if x <= tailleMax:
+                    if self.tableauRed[x] != "mort":
+                        self.tableauRed[x].setMouvement()
                     
                            
 
@@ -63,14 +64,15 @@ class Index:
     #Fonction  gére la gestion globale de notre application 
     def gestionDePartie (self):
         
-        tempsDeplacement = 5
+        tempsDeplacement = 80
         self.view(self.plateauDeJeu)
         
         for i in range (0, tempsDeplacement):
             
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
-            
+        print(self.tableauBleu)
+        print(self.tableauRed)        
                
     
     def mort(self,PersonnageMort):
@@ -93,8 +95,7 @@ class Index:
         if PersonnageMort.couleur == "blue":
             for i in range(0,len(self.tableauBleu)):
                 if self.tableauBleu[i] == PersonnageMort:
-                    print("Suppresion d'un joeur d'equipe bleu ")
-                    del self.tableauBleu[i]
+                    self.tableauBleu[i] = "mort"
                     print(self.tableauBleu,"Jouer bleu mort")
                     break
         
