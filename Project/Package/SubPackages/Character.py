@@ -110,29 +110,36 @@ class Character:
                             
                             break
                         indice = indice + 1
-                        
+
+                    return 1 # Représente le remplacement de la case vide et de l'objet 
+                            
         if enemieNear == 0 and objPersonnage != 0 :
-             self.attaqueCible (objPersonnage)
+             vieOrMort = self.attaqueCible (objPersonnage)
              print("ZEFdqsqqqqqqqqqqqqqqqqqqqq")
+             return vieOrMort #Représente si en vie ou mort 
+
+        return "erreur"
              
              
     def attaqueCible (self,objPersonnage):
         attaquePossible = randrange(1,101,1)
         if  attaquePossible <= self.initiative:
-            objPersonnage.degatSubit(self.strengh)
-        
+           vieOrMort = objPersonnage.degatSubit(self.strengh)
+           return vieOrMort
     def degatSubit(self,strengh):
         if self.lifePts <= 0 :
-           self.mortPersonnage()
-           return 0
-        self.lifePts = self.lifePts - strengh
-        print(self.lifePts," vie ")
+           self.Index.mort(self)
+           return "mort"
+        if self.lifePts > 0 :
+            self.lifePts = self.lifePts - strengh
+            print(self.lifePts," vie ")
+            return "vie"
+        
         if self.lifePts <= 0 :
-           self.mortPersonnage()
-           return 0
+            self.Index.mort(self)
+            return "mort"
            
-    def mortPersonnage(self):
-        self.Index.mort(self)
+        
 
                 
     

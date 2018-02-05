@@ -34,7 +34,7 @@ class Index:
         print("")
         #self.plateauDeJeu.formatViewArray(0) #Tableau Coordonees
         print("")
-        #self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
+        self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
 
 
 
@@ -43,11 +43,15 @@ class Index:
 
         if len(self.tableauRed) >= len(self.tableauBleu):
             tailleMax = len(self.tableauRed) - 1
+            
             for x in range(0,len(self.tableauRed)):
-
+                
+                tailleMax = len(self.tableauRed) - 1
+                
                 if x <= len(self.tableauBleu) - 1 :
 
-                    self.tableauBleu[x].setMouvement()
+                    vieOrMort = self.tableauBleu[x].setMouvement()
+                    
                 if x <= tailleMax:    
                     self.tableauRed[x].setMouvement()
                     
@@ -57,28 +61,37 @@ class Index:
     #Fonction  gére la gestion globale de notre application 
     def gestionDePartie (self):
         
-        tempsDeplacement = 30
+        tempsDeplacement = 50
         self.view(self.plateauDeJeu)
         
         for i in range (0, tempsDeplacement):
             
             self.mouvement()
-               
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
             
                
     
     def mort(self,PersonnageMort):
         compteur = 0
+
         for i in self.plateauDeJeu.tableauGeneral:
             if  self.plateauDeJeu.tableauGeneral[compteur][0] == PersonnageMort.position :
                 self.plateauDeJeu.tableauGeneral[compteur][2] = "vide"
             compteur +=1
+
+            
         if PersonnageMort.couleur == "red":
             for i in range(0,len(self.tableauRed)):
                 print(i)
                 if self.tableauRed[i] == PersonnageMort:
                     del self.tableauRed[i]
+                    break
+                    
+        if PersonnageMort.couleur == "blue":
+            for i in range(0,len(self.tableauBleu)):
+                if self.tableauBleu[i] == PersonnageMort:
+                    print("Suppresion d'un joeur d'equipe bleu ")
+                    del self.tableauBleu[i]
                     break
         
 
