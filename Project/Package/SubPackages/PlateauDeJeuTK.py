@@ -10,6 +10,8 @@ class PlateauDeJeuTK:
         self.nbLigne = 0
         self.tabCord = []
         self.tabCordVOLO = []
+        self.tableauPositionCoord=[]
+        self.tableauPositionJoueur=[]
         self.setColor()
         self.setPlateau()
         self.setTailleScreen()
@@ -17,7 +19,6 @@ class PlateauDeJeuTK:
         self.setCreateGrille()
         self.setPositionGrille()
         self.settest()
-        self.positionJoueurRouge()
 
         
     ####### Geter #######
@@ -135,20 +136,26 @@ class PlateauDeJeuTK:
         ##print(self.tabCordVOLO)
         return (self.tabCord,self.tabCordVOLO)
 
-    def positionJoueurRouge(self):
-        player = 0
-        if player == 1:
-            self.zoneCanvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
+    def positionJoueurRouge(self,tableauRed):
+        i=0
+        while i < len(tableauRed):
+            if tableauRed[i] == self.tableauPosition[i+1]:
+            for i in range(0,len(tableauRed)):
+                self.zoneCanvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
 
-
+    def setCase(self):
+        for i in range(len(self.tableauPositionCoord)):
+            if self.tableauPositionCoord[i] == tabCordVOLO[a]:
+                case = a
+                
 
     def setTabCharacter(self,array):
         self.tableauCharacter=array
-        tableauPosition=[]
         for i in range(0,len(self.tableauCharacter)):
             if self.tableauCharacter[i][2] != 'vide':
-                tableauPosition.append(self.tableauCharacter[i][0])   
-        print(tableauPosition)
+                self.tableauPositionCoord.append(self.tableauCharacter[i][0])
+                self.tableauPositionJoueur.append(self.tableauCharacter[i][2])
+        return(self.tableauPositionCoord,self.tableauPositionJoueur)
 
 
 ##select_Plateau()
