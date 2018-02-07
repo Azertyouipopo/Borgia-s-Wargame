@@ -89,15 +89,6 @@ class Index:
         self.view(self.plateauDeJeu)
         
         for i in range (0, tempsDeplacement):
-<<<<<<< HEAD
-            variableFinPartie = self.conditionFinDePartie()
-
-            if variableFinPartie == 1:
-                print("fin de partie")
-                break
-            
-=======
->>>>>>> 4c0d0b6a12134a2fab020044c3de1ecdfd2bc8f6
             self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
