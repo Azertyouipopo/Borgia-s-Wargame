@@ -134,10 +134,17 @@ class Character:
         if self.lifePts <= 0 :
            self.Index.mort(self)
            return "mort"
+
+        if self.armor > 0 :
+            self.armor = self .armor - 1
+            s
+
+        
         if self.lifePts > 0 :
             self.lifePts = self.lifePts - strengh
             print(self.lifePts," vie ")
             return "vie"
+
         
         if self.lifePts <= 0 :
             self.Index.mort(self)
