@@ -30,7 +30,7 @@ class Index:
 
     def view(self,plateauDeJeu):
         
-        self.plateauDeJeu.formatViewArray(2) # Tableau Character
+        #self.plateauDeJeu.formatViewArray(2) # Tableau Character
         print("")
         #self.plateauDeJeu.formatViewArray(1) #Tableau Terrain
         print("")
@@ -38,15 +38,36 @@ class Index:
         print("")
         #self.plateauDeJeu.formatViewArrayGeneral() #TableauGeneral
 
+    def conditionFinDePartie(self):
+        nombreMortRouge = 0
+        nombreMortBleu = 0
+        for x in range(0,len(self.tableauRed)):
+            
+            if self.tableauRed[x] == "mort":
+                nombreMortRouge += 1
 
+            if self.tableauBleu[x] == "mort":
+                nombreMortBleu += 1
+                
+        if nombreMortRouge == len(self.tableauRed):
+            return 1
+
+        if nombreMortBleu == len(self.tableauBleu):
+            return 1
+
+        return 0 
+        
 
 
     def mouvement(self):
 
         if len(self.tableauRed) >= len(self.tableauBleu):
+            
             tailleMax = len(self.tableauRed) - 1
             
             for x in range(0,len(self.tableauRed)):
+
+               
                 
                 tailleMax = len(self.tableauRed) - 1
                 
@@ -64,15 +85,23 @@ class Index:
     #Fonction  gére la gestion globale de notre application 
     def gestionDePartie (self):
         
-        tempsDeplacement = 50
+        tempsDeplacement = 100
         self.view(self.plateauDeJeu)
         
         for i in range (0, tempsDeplacement):
-            #self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
+            variableFinPartie = self.conditionFinDePartie()
+
+            if variableFinPartie == 1:
+                print("fin de partie")
+                break
+            
+            self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
         print(self.tableauBleu)
-        print(self.tableauRed)        
+        print(self.tableauRed)
+
+        
                
     
     def mort(self,PersonnageMort):

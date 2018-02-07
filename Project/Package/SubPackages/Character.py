@@ -118,7 +118,7 @@ class Character:
                             
         if enemieNear == 0 and objPersonnage != 0 :
              vieOrMort = self.attaqueCible (objPersonnage)
-             print("ZEFdqsqqqqqqqqqqqqqqqqqqqq")
+             
              return vieOrMort #Représente si en vie ou mort 
 
         return "erreur"
@@ -126,6 +126,7 @@ class Character:
              
     def attaqueCible (self,objPersonnage):
         attaquePossible = randrange(1,101,1)
+        
         if  attaquePossible <= self.initiative:
            vieOrMort = objPersonnage.degatSubit(self.strengh)
            return vieOrMort
@@ -135,7 +136,7 @@ class Character:
            return "mort"
         if self.lifePts > 0 :
             self.lifePts = self.lifePts - strengh
-            print(self.lifePts," vie ")
+            #print(self.lifePts," vie ")
             return "vie"
         
         if self.lifePts <= 0 :
