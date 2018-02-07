@@ -17,7 +17,7 @@ class PlateauDeJeuTK:
         self.setCreateGrille()
         self.setPositionGrille()
         self.settest()
-        self.positionJoueur()
+        self.positionJoueurRouge()
 
         
     ####### Geter #######
@@ -130,27 +130,24 @@ class PlateauDeJeuTK:
                self.tabCordVOLO.append(tabCordT[a])
                a=a+1
             x=x+10
-        print(a)
-        print(self.tabCord)
-        print(self.tabCordVOLO)
+        ##print(a)
+        ##print(self.tabCord)
+        ##print(self.tabCordVOLO)
         return (self.tabCord,self.tabCordVOLO)
 
-    def positionJoueur(self):
+    def positionJoueurRouge(self):
         player = 0
-        x = 1
-        print(self.tabCord[(x)])
         if player == 1:
             self.zoneCanvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
 
 
     def setTabCharacter(self,array):
         self.tableauCharacter=array
-        while joueur < 4:
-            i=0
-            if self.tableauCharacter[i] == 'vide':
-                i=i+1
-            else:
-                print(self.tableauCharacter[i])
+        tableauPosition=[]
+        for i in range(0,len(self.tableauCharacter)):
+            if self.tableauCharacter[i][2] != 'vide':
+                tableauPosition.append(self.tableauCharacter[i][0])   
+        print(tableauPosition)
 
 
 
