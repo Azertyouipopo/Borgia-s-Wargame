@@ -1,4 +1,3 @@
-
 from random import *
 
 
@@ -34,7 +33,7 @@ class Character:
         self.xOry = nbPixelX
         self.couleur = color
         self.putInArmy(self,color)
-
+     
     
         
 
@@ -118,26 +117,34 @@ class Character:
                             
         if enemieNear == 0 and objPersonnage != 0 :
              vieOrMort = self.attaqueCible (objPersonnage)
-             
+             print("ZEFdqsqqqqqqqqqqqqqqqqqqqq")
              return vieOrMort #Représente si en vie ou mort 
 
         return "erreur"
              
-             
+             #Fonction qui inflige des dégats à une cible proche
     def attaqueCible (self,objPersonnage):
         attaquePossible = randrange(1,101,1)
-        
         if  attaquePossible <= self.initiative:
            vieOrMort = objPersonnage.degatSubit(self.strengh)
            return vieOrMort
+
+        #Cette fonction est pour retiré des points de vie à une unité en fonction de l'attaque reçu
     def degatSubit(self,strengh):
         if self.lifePts <= 0 :
            self.Index.mort(self)
            return "mort"
+
+        if self.armor > 0 :
+            self.armor = self .armor - 1
+            s
+
+        
         if self.lifePts > 0 :
             self.lifePts = self.lifePts - strengh
-            #print(self.lifePts," vie ")
+            print(self.lifePts," vie ")
             return "vie"
+
         
         if self.lifePts <= 0 :
             self.Index.mort(self)
@@ -146,7 +153,7 @@ class Character:
         
 
                 
-    
+        #verifEnemienear est ici pour tester s'il y a des ennemies sur chaque case adjacente à celle de l'unité sélectionnée
     def verifEnemieNear(self):
         #4
         newCoordone = self.position[1] - 10
@@ -332,14 +339,11 @@ class Fantassin(Character):
         self.name = name 
         self.plateauDeJeu = plateauDeJeu
         self.role = "Personnage"    
-        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.initiative = 50           # L'initiative est à changer en fonction des perso
         self.identificateur = id(self) # Inscript l'id de lobjet 
         self.lifePts = 8
         self.armor = 0
         self.strengh = 1
-        self.xOry = nbPixelX
-        self.couleur = color
-        self.putInArmy(self,color)
 
 
 ####################################################################################################################################################################
@@ -353,14 +357,11 @@ class Bretteur(Character):
         self.name = name 
         self.plateauDeJeu = plateauDeJeu
         self.role = "Personnage"
-        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.initiative = 85           # L'initiative est à changer en fonction des perso
         self.identificateur = id(self) # Inscript l'id de lobjet 
         self.lifePts = 15
         self.armor = 5
         self.strengh = 4
-        self.xOry = nbPixelX
-        self.couleur = color
-        self.putInArmy(self,color)
 
 
 
@@ -375,14 +376,11 @@ class Chevalier(Character):
         self.name = name 
         self.plateauDeJeu = plateauDeJeu
         self.role = "Personnage"
-        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.initiative = 75           # L'initiative est à changer en fonction des perso
         self.identificateur = id(self) # Inscript l'id de lobjet 
         self.lifePts = 15
         self.armor = 8
         self.strengh = 4
-        self.xOry = nbPixelX
-        self.couleur = color
-        self.putInArmy(self,color)
 
 
 
@@ -397,13 +395,8 @@ class Archer(Character):
         self.name = name 
         self.plateauDeJeu = plateauDeJeu
         self.role = "Personnage"
-        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.initiative =  65          # L'initiative est à changer en fonction des perso
         self.identificateur = id(self) # Inscript l'id de lobjet 
         self.lifePts = 5
         self.armor = 0
         self.strengh = 2
-        self.xOry = nbPixelX
-        self.couleur = color
-        self.putInArmy(self,color)
-
-
