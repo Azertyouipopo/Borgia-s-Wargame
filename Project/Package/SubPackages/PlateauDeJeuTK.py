@@ -10,8 +10,7 @@ class PlateauDeJeuTK:
         self.nbLigne = 0
         self.tabCord = []
         self.tabCordVOLO = []
-        self.tableauPositionCoord=[]
-        self.tableauPositionJoueur=[]
+        self.tableauPositionCoordRouge=[]
         self.setColor()
         self.setPlateau()
         self.setTailleScreen()
@@ -135,31 +134,42 @@ class PlateauDeJeuTK:
         ##print(self.tabCord)
         ##print(self.tabCordVOLO)
         return (self.tabCord,self.tabCordVOLO)
-
-    def positionJoueurRouge(self,tableauRed):
-        i=0
-        while i < len(tableauRed):
-            if tableauRed[i] == self.tableauPosition[i+1]:
-            for i in range(0,len(tableauRed)):
-                self.zoneCanvas.create_rectangle(self.tabCord[(x)][0],self.tabCord[(x)][1],self.tabCord[(x)][2],self.tabCord[(x)][3],fill='white')
-
-    def setCase(self):
-        for i in range(len(self.tableauPositionCoord)):
-            if self.tableauPositionCoord[i] == tabCordVOLO[a]:
-                case = a
                 
-
-    def setTabCharacter(self,array):
+    def setTabCharacterRouge(self,array,tableauRed):
         self.tableauCharacter=array
-        for i in range(0,len(self.tableauCharacter)):
-            if self.tableauCharacter[i][2] != 'vide':
-                self.tableauPositionCoord.append(self.tableauCharacter[i][0])
-                self.tableauPositionJoueur.append(self.tableauCharacter[i][2])
-        return(self.tableauPositionCoord,self.tableauPositionJoueur)
+        self.tableauPositionCoordRouge=tableauRed
+        a=0
+        i=0
 
+        nombreMortRouge = 0 # var int représentant le nombre de mort de l'equipe Rouge
 
-##select_Plateau()
-##taille_Affichage(nb_Col,esp,nb_Ligne)
-##zone_canvas= Canvas(Fenetre, width=w,height=h,bg=color,relief="ridge")
-##crea_Grille(nb_Col,esp,nb_Ligne)
-##zone_canvas.pack()
+        #Boucle qui parcoure les tableau red,bleu 
+        for x in range(0,len(tableauRed)):
+
+            # si un indice du tableauRed alors incrémentation de la variable 
+            if tableauRed[x] == "mort":
+                nombreMortRouge += 1
+
+        #si le nombre de mort est égale au nombre de joeur alors toutes l'equipe est morte !        
+            if nombreMortRouge == len(tableauRed):
+                return 1
+        
+        while len(tableauRed) > nombreMortRouge:
+            verif=0
+            if self.tableauCharacter[a][2] == tableauRed [i]:
+                verif=1
+                print('Deplacement')
+            else:
+                a=a+1
+                verif=0
+            if i > nombreMortRouge:
+                if verif==1:
+                    i=i+1
+                    verif=0
+                    a=0
+                else:
+                    verif=0
+            if i == nombreMortRouge:
+                i=i-1
+            if i < nombreMortRouge:
+                break

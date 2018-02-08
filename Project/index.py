@@ -88,12 +88,12 @@ class Index:
                 if x <= len(self.tableauBleu) - 1 :
                     if self.tableauBleu[x] != "mort":
                         vieOrMort = self.tableauBleu[x].setMouvement()
-                        self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
+                        #self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
                         #self.plateauDeJeuTK.positionJoueurBleu(self.tableauBleu)
                 if x <= tailleMax:
                     if self.tableauRed[x] != "mort":
                         self.tableauRed[x].setMouvement()
-                        self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
+                        self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
                         #self.plateauDeJeuTK.positionJoueurRouge(self.tableauRed)
                            
 
@@ -109,7 +109,7 @@ class Index:
         while  fin ==  1:
             
             tempsDeplacement += 1
-            self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
+            self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
 

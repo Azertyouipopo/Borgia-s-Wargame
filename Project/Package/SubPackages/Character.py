@@ -137,7 +137,7 @@ class Character:
 
         if self.armor > 0 :
             self.armor = self .armor - 1
-            s
+            
 
         
         if self.lifePts > 0 :
