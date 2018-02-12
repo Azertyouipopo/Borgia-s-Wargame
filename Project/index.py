@@ -1,6 +1,7 @@
 from Package.soldier import*
 from tkinter import *
 from random import *
+import time
 
 class Index:
 
@@ -9,7 +10,6 @@ class Index:
     def __init__ (self) :
 
         self.plateauDeJeuTK = PlateauDeJeuTK() # Initialisation du plateauTkinter
-        
         ### Initialisation des attribut lambda ###
         self.nbPixelX = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour x
        
@@ -88,7 +88,6 @@ class Index:
             for x in range(0,len(self.tableauRed)):
 
                
-                
                 tailleMax = len(self.tableauRed) - 1
                 
                 if x <= len(self.tableauBleu) - 1 :
@@ -110,16 +109,19 @@ class Index:
         tempsDeplacement = 0
         self.view(self.plateauDeJeu)
         fin = 1
-        
+        self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
+
         
         while  fin ==  1:
             
             tempsDeplacement += 1
+
             #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
+
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
-
             variableFinPartie = self.conditionFinDePartie()
+            self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
 
             if variableFinPartie == 1 :
                 print("fin dE PARTIE")
