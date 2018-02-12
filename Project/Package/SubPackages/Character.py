@@ -117,7 +117,7 @@ class Character:
                             
         if enemieNear == 0 and objPersonnage != 0 :
              vieOrMort = self.attaqueCible (objPersonnage)
-             print("ZEFdqsqqqqqqqqqqqqqqqqqqqq")
+             #print("ZEFdqsqqqqqqqqqqqqqqqqqqqq")
              return vieOrMort #Représente si en vie ou mort 
 
         return "erreur"
@@ -130,19 +130,23 @@ class Character:
            return vieOrMort
 
         #Cette fonction est pour retiré des points de vie à une unité en fonction de l'attaque reçu
+        
     def degatSubit(self,strengh):
+
         if self.lifePts <= 0 :
            self.Index.mort(self)
            return "mort"
 
-        if self.armor > 0 :
-            self.armor = self .armor - 1
+        if self.armor > 0 and self.lifePts > 0:
             
-
+            degatTampon =  strengh*(self.armor / 100)
+            self.lifePts = self.lifePts -(strengh - degatTampon)
+            self.armor = self.armor - 1
+            return 1 
         
-        if self.lifePts > 0 :
+        if self.lifePts > 0  and self.armor == 0:
             self.lifePts = self.lifePts - strengh
-            print(self.lifePts," vie ")
+            #print(self.lifePts," vie ")
             return "vie"
 
         

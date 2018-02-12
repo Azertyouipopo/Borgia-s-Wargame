@@ -4,29 +4,48 @@ class Position:
     def __init__(self,plateauDeJeu,Character,nbPixelX,index):
         
         self.plateauDeJeu = plateauDeJeu
+        self.nbPixelX = nbPixelX
+        self.Index = index
+        self.Character = Character
+        
         self.personnage = Character('blue',plateauDeJeu,nbPixelX,"personnage",index)
         self.personnage4 = Character('blue',plateauDeJeu,nbPixelX,"personnage4",index)
-        self.personnage2 = Character('red',plateauDeJeu,nbPixelX,"personnage2",index)
-        self.personnage3 = Character('red',plateauDeJeu,nbPixelX,"personnage3",index)
-
-        # qui insére ces coordonée de postion d'apres le tableauGeneral
-        self.plateauDeJeu.tableauGeneral[2][2] = self.personnage
-        self.plateauDeJeu.tableauGeneral[7][2] = self.personnage4
-        self.plateauDeJeu.tableauGeneral[20][2] = self.personnage2
-        self.plateauDeJeu.tableauGeneral[24][2] =self.personnage3
         
 
-        self.personnage.setPosition(self.plateauDeJeu.tableauGeneral[2][0])
-        self.personnage4.setPosition(self.plateauDeJeu.tableauGeneral[7][0]) 
-        self.personnage2.setPosition(self.plateauDeJeu.tableauGeneral[20][0])
-        self.personnage3.setPosition(self.plateauDeJeu.tableauGeneral[24][0])
+        # qui insére ces coordonée de postion d'apres le tableauGeneral
+        self.plateauDeJeu.tableauGeneral[800][2] = self.personnage
+        self.plateauDeJeu.tableauGeneral[850][2] = self.personnage4
+        
+        
 
+        self.personnage.setPosition(self.plateauDeJeu.tableauGeneral[800][0])
+        self.personnage4.setPosition(self.plateauDeJeu.tableauGeneral[850][0]) 
+        
+
+        self.initArmeeRouge()
     
          
         
        
+    def initArmeeRouge(self):
 
-     
+        stop = 0
+        tableau = []
+        while stop == 0:
+            soldatPersonnage =int(input("Combien de Personnage est composée de l'equipe énemies !"))
+            if soldatPersonnage > 0 and soldatPersonnage < self.nbPixelX  :
+                for i in range(0,soldatPersonnage):
+                    self.i = self.Character("red",self.plateauDeJeu,self.nbPixelX,str(i),self.Index)
+                    tableau.append(self.i)
+                    
+                for x in range(0,len(tableau)):
+                    self.plateauDeJeu.tableauGeneral[x][2] = tableau[x]
+                    
+                for y in range(0,len(tableau)):
+                    tableau[y].setPosition(self.plateauDeJeu.tableauGeneral[y][0])
+                    
+            break
+              
         
         
         

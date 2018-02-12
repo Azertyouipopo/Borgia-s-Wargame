@@ -12,6 +12,7 @@ class Index:
         
         ### Initialisation des attribut lambda ###
         self.nbPixelX = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour x
+       
         self.nbPixelY = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour y
         self.indiceB = 0 # Initialisation d'un indice de recherche in array Bleu
         self.indiceR = 0 # Initialisation d'un indice de recherche in array Rouge
@@ -31,7 +32,7 @@ class Index:
 
 
     def view(self,plateauDeJeu):
-           """ddd""" 
+            """"""
         #self.plateauDeJeu.formatViewArray(2) # Tableau Character
         #print("")
         #self.plateauDeJeu.formatViewArray(1) #Tableau Terrain
@@ -56,14 +57,19 @@ class Index:
                 nombreMortRouge += 1
 
             # si un indice du tableauBleu alors incrémentation de la variable 
-            if self.tableauBleu[x] == "mort":
-                nombreMortBleu += 1
-
+            
         #si le nombre de mort est égale au nombre de joeur alors toutes l'equipe est morte !        
         if nombreMortRouge == len(self.tableauRed):
             return 1
+
         
-        #si le nombre de mort est égale au nombre de joeur alors toutes l'equipe est morte ! 
+        for y in range(0,len(self.tableauBleu)):        
+
+            if self.tableauBleu[y] == "mort":
+                    nombreMortBleu += 1
+
+        
+        #si le nombre de mort est égale au nombre de joeur alors toutes l'equipe est morte !
         if nombreMortBleu == len(self.tableauBleu):
             return 1
         
@@ -93,7 +99,7 @@ class Index:
                 if x <= tailleMax:
                     if self.tableauRed[x] != "mort":
                         self.tableauRed[x].setMouvement()
-                        self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
+                        #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
                         #self.plateauDeJeuTK.positionJoueurRouge(self.tableauRed)
                            
 
@@ -109,7 +115,7 @@ class Index:
         while  fin ==  1:
             
             tempsDeplacement += 1
-            self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
+            #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
 
@@ -136,7 +142,7 @@ class Index:
             
         if PersonnageMort.couleur == "red":
             for i in range(0,len(self.tableauRed)):
-                print(i)
+                
                 if self.tableauRed[i] == PersonnageMort:
                     self.tableauRed[i] = "mort"
                     print(self.tableauRed,"Jouer rouge mort")
