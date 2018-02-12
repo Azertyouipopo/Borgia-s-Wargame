@@ -1,5 +1,4 @@
 from tkinter import*
-
 class PlateauDeJeuTK:
 
     def __init__(self):
@@ -138,38 +137,31 @@ class PlateauDeJeuTK:
     def setTabCharacterRouge(self,array,tableauRed):
         self.tableauCharacter=array
         self.tableauPositionCoordRouge=tableauRed
-        a=0
         i=0
-
-        nombreMortRouge = 0 # var int représentant le nombre de mort de l'equipe Rouge
-
-        #Boucle qui parcoure les tableau red,bleu 
+        verif=0
+        cpt=0
+        nombreMortRouge = 0
         for x in range(0,len(tableauRed)):
-
-            # si un indice du tableauRed alors incrémentation de la variable 
             if tableauRed[x] == "mort":
                 nombreMortRouge += 1
-
-        #si le nombre de mort est égale au nombre de joeur alors toutes l'equipe est morte !        
-            if nombreMortRouge == len(tableauRed):
-                return 1
-        
-        while len(tableauRed) > nombreMortRouge:
-            verif=0
-            if self.tableauCharacter[a][2] == tableauRed [i]:
-                verif=1
-                print('Deplacement')
-            else:
-                a=a+1
-                verif=0
-            if i > nombreMortRouge:
-                if verif==1:
+        while len(tableauRed) >= nombreMortRouge:
+            for a in range(0,len(self.tableauCharacter),1):
+                if self.tableauCharacter[a][2] == tableauRed [i] and verif==0:
+                    self.tableauPositionCoordRouge[i]=self.tableauCharacter[a][0]
+                    print(self.tableauPositionCoordRouge)
+                    verif=1
+                    cpt = cpt + 1
+                    print('Bug 1')
+                    print('verif',verif,'i',i,'cpt',cpt)
+                if verif == 1 and cpt <= len(tableauRed) and i < len(tableauRed):
                     i=i+1
                     verif=0
-                    a=0
-                else:
+                    cpt=cpt+1
+                    print('Bug 2')
+                    print('verif',verif,'i',i,'cpt',cpt)
+                if verif == 1 and cpt > len(tableauRed) :
+                    i=0
+                    cpt=0
                     verif=0
-            if i == nombreMortRouge:
-                i=i-1
-            if i < nombreMortRouge:
-                break
+                    print('Bug 3')
+                    print('verif',verif,'i',i,'cpt',cpt)
