@@ -141,27 +141,28 @@ class PlateauDeJeuTK:
         verif=0
         cpt=0
         nombreMortRouge = 0
+        a=0
         for x in range(0,len(tableauRed)):
             if tableauRed[x] == "mort":
                 nombreMortRouge += 1
         while len(tableauRed) >= nombreMortRouge:
-            for a in range(0,len(self.tableauCharacter),1):
                 if self.tableauCharacter[a][2] == tableauRed [i] and verif==0:
                     self.tableauPositionCoordRouge[i]=self.tableauCharacter[a][0]
                     print(self.tableauPositionCoordRouge)
                     verif=1
                     cpt = cpt + 1
                     print('Bug 1')
-                    print('verif',verif,'i',i,'cpt',cpt)
+                else:
+                    a=a+1
                 if verif == 1 and cpt <= len(tableauRed) and i < len(tableauRed):
                     i=i+1
                     verif=0
                     cpt=cpt+1
+                    a=0
                     print('Bug 2')
-                    print('verif',verif,'i',i,'cpt',cpt)
                 if verif == 1 and cpt > len(tableauRed) :
                     i=0
                     cpt=0
                     verif=0
+                    a=0
                     print('Bug 3')
-                    print('verif',verif,'i',i,'cpt',cpt)
