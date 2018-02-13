@@ -9,11 +9,15 @@ class Index:
     
     def __init__ (self) :
 
-        self.plateauDeJeuTK = PlateauDeJeuTK() # Initialisation du plateauTkinter
+        
+        #self.plateauDeJeuTK = PlateauDeJeuTK() # Initialisation du plateauTkinter
+        print("bug")
+
         ### Initialisation des attribut lambda ###
-        self.nbPixelX = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour x
-       
-        self.nbPixelY = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour y
+        #self.nbPixelX = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour x
+        self.nbPixelX = 100
+        self.nbPixelY = 100
+        #self.nbPixelY = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour y
         self.indiceB = 0 # Initialisation d'un indice de recherche in array Bleu
         self.indiceR = 0 # Initialisation d'un indice de recherche in array Rouge
         self.step = 10 # variable de controle 
@@ -21,7 +25,7 @@ class Index:
         
         ###Initialisation des classes ###
         self.plateauDeJeu = Plateau(self.nbPixelX,self.nbPixelY,self.step) # Instancie notre plateauDejeu
-        self.trya = Position(self.plateauDeJeu,Character,self.nbPixelX,self) # implante des soldat dans le terain
+        self.trya = Position(self.plateauDeJeu,Character,Fantassin,Bretteur,Chevalier,self.nbPixelX,self) # implante des soldat dans le terain
         self.tableauBleu = Character.blue #Recuperation du tableau bleu représentant une equipe
         self.tableauRed = Character.red #Recuperation du tableau bleu représentant une equipe
 
@@ -32,7 +36,7 @@ class Index:
 
 
     def view(self,plateauDeJeu):
-            """"""
+        pass   
         #self.plateauDeJeu.formatViewArray(2) # Tableau Character
         #print("")
         #self.plateauDeJeu.formatViewArray(1) #Tableau Terrain
@@ -44,6 +48,7 @@ class Index:
 
     # Note fonction va déterminer si tous les joeur d'une equipe est mort
     ## ou pas si c'est le cas la partie est fini
+    
     def conditionFinDePartie(self):
         
         nombreMortRouge = 0 # var int représentant le nombre de mort de l'equipe Rouge
@@ -60,7 +65,7 @@ class Index:
             
         #si le nombre de mort est égale au nombre de joeur alors toutes l'equipe est morte !        
         if nombreMortRouge == len(self.tableauRed):
-            return 1
+            return 1 # 1 veut dire equipe bleu gagnante !
 
         
         for y in range(0,len(self.tableauBleu)):        
@@ -71,7 +76,7 @@ class Index:
         
         #si le nombre de mort est égale au nombre de joeur alors toutes l'equipe est morte !
         if nombreMortBleu == len(self.tableauBleu):
-            return 1
+            return 2 # 2 represente l'equipe rouge gagnante
         
         return 0 
         
@@ -109,7 +114,7 @@ class Index:
         tempsDeplacement = 0
         self.view(self.plateauDeJeu)
         fin = 1
-        self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
+        #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
 
         
         while  fin ==  1:
@@ -121,14 +126,23 @@ class Index:
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
             variableFinPartie = self.conditionFinDePartie()
-            self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
+            #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
 
             if variableFinPartie == 1 :
-                print("fin dE PARTIE")
+                print(self.tableauBleu,"Tableau de l'equipe bleu ")
+                print(self.tableauRed,"Tableau de l'equipe rouge")
                 print(tempsDeplacement)
+                print("L'equipe bleu à gagner !") 
                 break
-        print(self.tableauBleu)
-        print(self.tableauRed)
+
+            
+            if variableFinPartie == 2 :
+                print(self.tableauBleu,"Tableau de l'equipe bleu ")
+                print(self.tableauRed,"Tableau de l'equipe rouge")
+                print(tempsDeplacement)
+                print("L'equipe rouge à gagner !")
+                break
+        
     
         
                

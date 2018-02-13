@@ -229,10 +229,9 @@ class Character:
             
             if self.position[1] != 10:
                 
-                
-
                 return 0
             
+
             else :
                 return 1
             
@@ -338,16 +337,12 @@ class Character:
         
 class Fantassin(Character):
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
-        super().__init__(self,color,plateauDeJeu,nbPixelX,name,index)
-        self.Index = index
-        self.name = name 
-        self.plateauDeJeu = plateauDeJeu
-        self.role = "Personnage"    
-        self.initiative = 50           # L'initiative est à changer en fonction des perso
-        self.identificateur = id(self) # Inscript l'id de lobjet 
-        self.lifePts = 8
-        self.armor = 0
-        self.strengh = 1
+        Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
+        self.role = "Fantassin"    
+        self.initiative = 60           # L'initiative est à changer en fonction des perso
+        self.lifePts = 60
+        self.armor = 10
+        self.strengh = 15
 
 
 ####################################################################################################################################################################
@@ -356,16 +351,12 @@ class Fantassin(Character):
         
 class Bretteur(Character):
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
-        super().__init__(self,color,plateauDeJeu,nbPixelX,name,index)
-        self.Index = index
-        self.name = name 
-        self.plateauDeJeu = plateauDeJeu
-        self.role = "Personnage"
-        self.initiative = 85           # L'initiative est à changer en fonction des perso
-        self.identificateur = id(self) # Inscript l'id de lobjet 
-        self.lifePts = 15
-        self.armor = 5
-        self.strengh = 4
+        Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
+        self.role = "Bretteur"
+        self.initiative = 75           # L'initiative est à changer en fonction des perso
+        self.lifePts = 60
+        self.armor = 2
+        self.strengh = 20
 
 
 
@@ -375,16 +366,12 @@ class Bretteur(Character):
         
 class Chevalier(Character):
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
-        super().__init__(self,color,plateauDeJeu,nbPixelX,name,index)
-        self.Index = index
-        self.name = name 
-        self.plateauDeJeu = plateauDeJeu
-        self.role = "Personnage"
-        self.initiative = 75           # L'initiative est à changer en fonction des perso
-        self.identificateur = id(self) # Inscript l'id de lobjet 
-        self.lifePts = 15
-        self.armor = 8
-        self.strengh = 4
+        Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
+        self.role = "Chevalier"
+        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.lifePts = 75
+        self.armor = 15
+        self.strengh = 25
 
 
 
@@ -404,3 +391,5 @@ class Archer(Character):
         self.lifePts = 5
         self.armor = 0
         self.strengh = 2
+
+
