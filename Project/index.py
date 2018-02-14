@@ -25,6 +25,7 @@ class Index:
         
         ###Initialisation des classes ###
         self.plateauDeJeu = Plateau(self.nbPixelX,self.nbPixelY,self.step) # Instancie notre plateauDejeu
+        
         self.trya = Position(self.plateauDeJeu,Character,Fantassin,Bretteur,Chevalier,self.nbPixelX,self) # implante des soldat dans le terain
         self.tableauBleu = Character.blue #Recuperation du tableau bleu représentant une equipe
         self.tableauRed = Character.red #Recuperation du tableau bleu représentant une equipe
@@ -105,7 +106,25 @@ class Index:
                         self.tableauRed[x].setMouvement()
                         #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
                         #self.plateauDeJeuTK.positionJoueurRouge(self.tableauRed)
-                           
+
+    def remisAzero(self):
+
+        Character.blue = []#Destruction du tableau precedent
+        Character.red = [] #Destruction du tableau precedent       
+        #self.nbPixelX = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour x
+        self.nbPixelX = 100
+        self.nbPixelY = 100
+        #self.nbPixelY = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour y
+        self.indiceB = 0 # Initialisation d'un indice de recherche in array Bleu
+        self.indiceR = 0 # Initialisation d'un indice de recherche in array Rouge
+        self.step = 10 # variable de controle 
+        ###Initialisation des classes ###
+        self.plateauDeJeu = Plateau(self.nbPixelX,self.nbPixelY,self.step) # Instancie notre plateauDejeu
+        
+        self.trya = Position(self.plateauDeJeu,Character,Fantassin,Bretteur,Chevalier,self.nbPixelX,self) # implante des soldat dans le terain
+        self.tableauBleu = Character.blue #Recuperation du tableau bleu représentant une equipe
+        self.tableauRed = Character.red #Recuperation du tableau bleu représentant une equipe
+        self.gestionDePartie()
 
         
     #Fonction  gére la gestion globale de notre application 
@@ -132,7 +151,8 @@ class Index:
                 print(self.tableauBleu,"Tableau de l'equipe bleu ")
                 print(self.tableauRed,"Tableau de l'equipe rouge")
                 print(tempsDeplacement)
-                print("L'equipe bleu à gagner !") 
+                print("L'equipe bleu à gagner !")
+                self.remisAzero()
                 break
 
             
@@ -141,6 +161,7 @@ class Index:
                 print(self.tableauRed,"Tableau de l'equipe rouge")
                 print(tempsDeplacement)
                 print("L'equipe rouge à gagner !")
+                self.remisAzero()
                 break
         
     

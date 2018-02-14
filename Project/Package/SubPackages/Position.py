@@ -2,6 +2,8 @@ from random import *
 class Position:
     #Classe qui permet l'insertion de personnage dans le tableaus
 
+    tableauClasseAlgo =[]
+    
     def __init__(self,plateauDeJeu,Character,Fantassin,Bretteur,Chevalier,nbPixelX,index):
         
         self.plateauDeJeu = plateauDeJeu
@@ -11,24 +13,47 @@ class Position:
         self.Fantassin = Fantassin
         self.Bretteur = Bretteur
         self.Chevalier = Chevalier
+        self.tableauDeClasse = [self.Fantassin,self.Bretteur,self.Chevalier]
+        self.nombreDeClasse = len(self.tableauDeClasse)
+        self.algoClasse(self)
+
         
         self.personnage = Chevalier('blue',plateauDeJeu,nbPixelX,"personnage",index)
         self.personnage4 = Chevalier('blue',plateauDeJeu,nbPixelX,"personnage4",index)
         
 
         # qui insére ces coordonée de postion d'apres le tableauGeneral
-        self.plateauDeJeu.tableauGeneral[20][2] = self.personnage
-        self.plateauDeJeu.tableauGeneral[22][2] = self.personnage4
+        self.plateauDeJeu.tableauGeneral[90][2] = self.personnage
+        self.plateauDeJeu.tableauGeneral[91][2] = self.personnage4
         
         
 
-        self.personnage.setPosition(self.plateauDeJeu.tableauGeneral[20][0])
-        self.personnage4.setPosition(self.plateauDeJeu.tableauGeneral[22][0]) 
-        
+        self.personnage.setPosition(self.plateauDeJeu.tableauGeneral[90][0])
+        self.personnage4.setPosition(self.plateauDeJeu.tableauGeneral[91][0]) 
 
         self.initArmeeRouge()
+
+        
     
          
+    @staticmethod
+    def algoClasse(self):
+        if len(self.tableauClasseAlgo) == 0 :
+            pourcentageSpawn = 100 / self.nombreDeClasse
+            for i in range (0 , len(self.tableauDeClasse)):
+                self.tableauClasseAlgo.append([self.tableauDeClasse[i],pourcentageSpawn])
+            return 0
+        
+    def algoChoixDeClasse(self):
+        i = 0
+        while i != 1 :
+            choixClassRand = randrange(0, self.nombreDeClasse, 1)
+            choixClassRandPerso = randrange(0, 100 , 1) 
+            if self.tableauClasseAlgo[choixClassRand][1] >= choixClassRandPerso:
+                return(self.tableauClasseAlgo[choixClassRand])
+                 
+                
+        
         
        
     def initArmeeRouge(self):

@@ -51,6 +51,12 @@ class Character:
         else:
             self.red.append(self)
             
+    @staticmethod    
+    def destroyArmy(self):
+        print("DESTRUCTION :::::: !!!!!!! ::::: ")
+        self.blue = []
+        self.red = []
+        
 
     def setPosition(self,valueInt):
         self.position = valueInt
