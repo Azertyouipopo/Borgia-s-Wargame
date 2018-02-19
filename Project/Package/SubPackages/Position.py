@@ -17,9 +17,10 @@ class Position:
         self.nombreDeClasse = len(self.tableauDeClasse)
         self.algoClasse(self)
 
-        
-        self.personnage = Chevalier('blue',plateauDeJeu,nbPixelX,"personnage",index)
-        self.personnage4 = Chevalier('blue',plateauDeJeu,nbPixelX,"personnage4",index)
+        self.test = self.algoChoixDeClasse()
+        self.test1 = self.algoChoixDeClasse()
+        self.personnage = self.test('blue',plateauDeJeu,nbPixelX,"personnage",index)
+        self.personnage4 = self.test1('blue',plateauDeJeu,nbPixelX,"personnage4",index)
         
 
         # qui insére ces coordonée de postion d'apres le tableauGeneral
@@ -50,7 +51,7 @@ class Position:
             choixClassRand = randrange(0, self.nombreDeClasse, 1)
             choixClassRandPerso = randrange(0, 100 , 1) 
             if self.tableauClasseAlgo[choixClassRand][1] >= choixClassRandPerso:
-                return(self.tableauClasseAlgo[choixClassRand])
+                return(self.tableauClasseAlgo[choixClassRand][0])
                  
                 
         

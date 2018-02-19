@@ -23,6 +23,7 @@ class Character:
         self.name = name 
         self.plateauDeJeu = plateauDeJeu
         self.role = "Personnage"
+        self.tabStatAlgo = []
         self.initiative = 80
         self.identificateur = id(self) # Inscript l'id de lobjet 
         self.lifePts = 50
@@ -133,6 +134,8 @@ class Character:
         attaquePossible = randrange(1,101,1)
         if  attaquePossible <= self.initiative:
            vieOrMort = objPersonnage.degatSubit(self.strengh)
+           if self.couleur == "blue":
+               self.degatInfligeTotal += self.strengh  
            return vieOrMort
 
         #Cette fonction est pour retiré des points de vie à une unité en fonction de l'attaque reçu
@@ -144,13 +147,19 @@ class Character:
            return "mort"
 
         if self.armor > 0 and self.lifePts > 0:
-            
             degatTampon =  strengh*(self.armor / 100)
+            if self.couleur == "blue":
+                self.degatRecuTotal += self.lifePts -(strengh - degatTampon)
+            
+            
             self.lifePts = self.lifePts -(strengh - degatTampon)
-            self.armor = self.armor - 1
+            self.armor = self.armor - 1           
             return 1 
         
-        if self.lifePts > 0  and self.armor == 0:
+        if self.lifePts > 0  and self.armor <= 0:
+            if self.couleur == "blue":
+                self.degatRecuTotal += self.lifePts - strengh
+                print(self.degatRecuTotal,"dsqdsqdqsqsd")
             self.lifePts = self.lifePts - strengh
             #print(self.lifePts," vie ")
             return "vie"
@@ -159,7 +168,9 @@ class Character:
         if self.lifePts <= 0 :
             self.Index.mort(self)
             return "mort"
-           
+    @staticmethod     
+    def getVariableAlgo(cls):
+        return cls.degatRecuTotal,cls.degatInfligeTotal
         
 
                 
@@ -340,8 +351,10 @@ class Character:
 ####################################################################################################################################################################
 ###################################################################### Class Fantassin #############################################################################
 ####################################################################################################################################################################
-        
+    
 class Fantassin(Character):
+    degatRecuTotal = 0
+    degatInfligeTotal = 0
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
         Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
         self.role = "Fantassin"    
@@ -350,12 +363,16 @@ class Fantassin(Character):
         self.armor = 10
         self.strengh = 15
 
+    
+
 
 ####################################################################################################################################################################
 ###################################################################### Class Bretteur  #############################################################################
 ####################################################################################################################################################################
         
 class Bretteur(Character):
+    degatRecuTotal = 0
+    degatInfligeTotal = 0
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
         Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
         self.role = "Bretteur"
@@ -371,6 +388,8 @@ class Bretteur(Character):
 ####################################################################################################################################################################
         
 class Chevalier(Character):
+    degatRecuTotal = 0
+    degatInfligeTotal = 0
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
         Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
         self.role = "Chevalier"
