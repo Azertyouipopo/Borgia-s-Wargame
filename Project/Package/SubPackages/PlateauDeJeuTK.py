@@ -9,15 +9,16 @@ class PlateauDeJeuTK:
         self.nbLigne = 0
         self.tabCord = []
         self.tabCordVOLO = []
-        self.tableauPositionCoordRouge=[]
+        self.tabEqRed = []
+        self.tabEqBleu = []
+        self.tabPositionJBleu=[]
+        self.tabPositionJRed=[]
         self.setColor()
         self.setPlateau()
         self.setTailleScreen()
         self.setZoneCanvas()
         self.settest()
         self.setCreateGrille()
-        self.setPositionGrille()
-        self.loop()
         
 
         
@@ -131,46 +132,38 @@ class PlateauDeJeuTK:
         ##print(self.tabCord)
         ##print(self.tabCordVOLO)
         return (self.tabCord,self.tabCordVOLO)
-                
-    def setTabCharacterRouge(self,array,tableauRed):
-        self.tableauCharacter=array # Importation array general
-        tableauJoueurRouge=tableauRed #Importation array red
-        i=0 # nb case array red
-        verif=0 # variable de cotrole
-        cpt=0 # compteur deplacement tableau red 
-        nombreMortRouge = 0
+
+    def setTableauJoueur(self,tableauRed,tableauBleu):
+        self.tabEqRed = tableauRed
+        self.tabEqBleu = tableauBleu
+
+    def setPositionJoueur(self,array):
+        R = len(self.tabEqRed)
+        B = len(self.tabEqBleu)
+        r=0
         b=0
-        for z in range(0,len(tableauRed)):
-            self.tableauPositionCoordRouge.append(z)
-        # boucle calcule nbmort rouge 
-        for x in range(0,len(tableauRed)):
-            if tableauRed[x] == "mort":
-                nombreMortRouge += 1
-                
-        while len(tableauRed) > nombreMortRouge:
-            for a in range(0,len(self.tableauCharacter)):
-                if self.tableauCharacter[a][2] == tableauJoueurRouge[i] and verif==0:
-                    self.tableauPositionCoordRouge[i]=self.tableauCharacter[a][0]
-                    verif=1
-                    cpt=cpt + 1
-                if verif == 1 and cpt < len(tableauRed) and i < len(tableauRed):
-                    i=i+1
-                    verif=0
-                    cpt=cpt+1
-                if verif == 1 and cpt > len(tableauRed) :
-                    i=0
-                    cpt=0
-                    verif=0
-            return self.tableauPositionCoordRouge
-        
-        for x in range(0,len(self.tabCordVOLO)):
-            if self.tabCordVOLO[x]==self.tableauPositionCoordRouge[b]:
-                zoneCanvas.create_rectangle(tabCord[(x)][0],tabCord[(x)][1],tabCord[(x)][2],tabCord[(x)][3],fill='red')
+        i=0
+        j=0
+        while r < (R-1) and i < self.totalCaseTK:
+            if array[i][2]==self.tabEqRed[r] and r < (R-1):
+                self.tabPositionJRed.append(array[i][0])
+                r=r+1
+                i=0
+                print('Y')
+                print(i,r)
             else:
                 i=i+1
-            break
+                r=r
+                print(i,r)
+        while b < (B-1) and j< self.totalCaseTK:
+            if array[j][2]==self.tabEqRed[b] and b < (B-1):
+                self.tabPositionJBleu.append(array[j][0])
+                b=b+1
+                j=0
+            else:
+                b=b
+                j=j+1
+        print('Rouge',self.tabPositionJRed,'Bleu',self.tabPositionJBleu)
+
     def settest(self):
         self.zoneCanvas.pack()
-
-    def loop(self):
-        self.zoneCanvas.mainloop()
