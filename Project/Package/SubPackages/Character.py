@@ -15,7 +15,8 @@ class Character:
 
     blue = [] #Creation d'une equipe soit equipe bleu
     red = []#Creation d'une equipe soit equipe rouge
-
+    
+    
     ########################### Constructeur  #############################
     
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
@@ -54,9 +55,22 @@ class Character:
             
     @staticmethod    
     def destroyArmy(self):
-        print("DESTRUCTION :::::: !!!!!!! ::::: ")
-        self.blue = []
-        self.red = []
+        Character.blue = []
+        Character.red = []
+        
+
+    @staticmethod   
+    def setDegatRecuTotal(self,value):
+        self.degatRecuTotal += value
+        
+
+    
+    
+    @staticmethod   
+    def getDegatRecuTotal():
+        return degatRecuTotal 
+        
+        
         
 
     def setPosition(self,valueInt):
@@ -135,7 +149,8 @@ class Character:
         if  attaquePossible <= self.initiative:
            vieOrMort = objPersonnage.degatSubit(self.strengh)
            if self.couleur == "blue":
-               self.degatInfligeTotal += self.strengh  
+               self.degatInfligeTotal += self.strengh
+               
            return vieOrMort
 
         #Cette fonction est pour retiré des points de vie à une unité en fonction de l'attaque reçu
@@ -149,7 +164,8 @@ class Character:
         if self.armor > 0 and self.lifePts > 0:
             degatTampon =  strengh*(self.armor / 100)
             if self.couleur == "blue":
-                self.degatRecuTotal += self.lifePts -(strengh - degatTampon)
+                value = strengh - degatTampon
+                self.setDegatRecuTotal(self,value)
             
             
             self.lifePts = self.lifePts -(strengh - degatTampon)
@@ -158,8 +174,7 @@ class Character:
         
         if self.lifePts > 0  and self.armor <= 0:
             if self.couleur == "blue":
-                self.degatRecuTotal += self.lifePts - strengh
-                print(self.degatRecuTotal,"dsqdsqdqsqsd")
+                self.setDegatRecuTotal(self,self.strengh)
             self.lifePts = self.lifePts - strengh
             #print(self.lifePts," vie ")
             return "vie"
@@ -168,11 +183,9 @@ class Character:
         if self.lifePts <= 0 :
             self.Index.mort(self)
             return "mort"
-    @staticmethod     
-    def getVariableAlgo(cls):
-        return cls.degatRecuTotal,cls.degatInfligeTotal
-        
+    
 
+        
                 
         #verifEnemienear est ici pour tester s'il y a des ennemies sur chaque case adjacente à celle de l'unité sélectionnée
     def verifEnemieNear(self):
@@ -353,8 +366,10 @@ class Character:
 ####################################################################################################################################################################
     
 class Fantassin(Character):
+
     degatRecuTotal = 0
     degatInfligeTotal = 0
+    
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
         Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
         self.role = "Fantassin"    
@@ -362,6 +377,50 @@ class Fantassin(Character):
         self.lifePts = 60
         self.armor = 10
         self.strengh = 15
+        self.cost = 15
+        
+    def getVariableAlgo(self):
+        return self.degatRecuTotal,self.degatInfligeTotal
+
+    def attaqueCible (self,objPersonnage):
+        attaquePossible = randrange(1,101,1)
+        if  attaquePossible <= self.initiative:
+           vieOrMort = objPersonnage.degatSubit(self.strengh)
+           if self.couleur == "blue":
+               Fantassin.degatInfligeTotal += self.strengh
+               
+           return vieOrMort
+
+        #Cette fonction est pour retiré des points de vie à une unité en fonction de l'attaque reçu
+        
+    def degatSubit(self,strengh):
+
+        if self.lifePts <= 0 :
+           self.Index.mort(self)
+           return "mort"
+
+        if self.armor > 0 and self.lifePts > 0:
+            degatTampon =  strengh*(self.armor / 100)
+            if self.couleur == "blue":
+                value = strengh - degatTampon
+                Fantassin.degatRecuTotal += value
+            
+            
+            self.lifePts = self.lifePts -(strengh - degatTampon)
+            self.armor = self.armor - 1           
+            return 1 
+        
+        if self.lifePts > 0  and self.armor <= 0:
+            if self.couleur == "blue":
+                Fantassin.degatRecuTotal += strengh
+            self.lifePts = self.lifePts - strengh
+            #print(self.lifePts," vie ")
+            return "vie"
+
+        
+        if self.lifePts <= 0 :
+            self.Index.mort(self)
+            return "mort"
 
     
 
@@ -373,6 +432,7 @@ class Fantassin(Character):
 class Bretteur(Character):
     degatRecuTotal = 0
     degatInfligeTotal = 0
+    
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
         Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
         self.role = "Bretteur"
@@ -380,6 +440,50 @@ class Bretteur(Character):
         self.lifePts = 60
         self.armor = 2
         self.strengh = 20
+        self.cost = 20
+
+    def getVariableAlgo(self):
+        return self.degatRecuTotal,self.degatInfligeTotal
+
+    def attaqueCible (self,objPersonnage):
+        attaquePossible = randrange(1,101,1)
+        if  attaquePossible <= self.initiative:
+           vieOrMort = objPersonnage.degatSubit(self.strengh)
+           if self.couleur == "blue":
+               Bretteur.degatInfligeTotal += self.strengh
+               
+           return vieOrMort
+
+        #Cette fonction est pour retiré des points de vie à une unité en fonction de l'attaque reçu
+        
+    def degatSubit(self,strengh):
+
+        if self.lifePts <= 0 :
+           self.Index.mort(self)
+           return "mort"
+
+        if self.armor > 0 and self.lifePts > 0:
+            degatTampon =  strengh*(self.armor / 100)
+            if self.couleur == "blue":
+                value = strengh - degatTampon
+                Bretteur.degatRecuTotal += value
+            
+            
+            self.lifePts = self.lifePts -(strengh - degatTampon)
+            self.armor = self.armor - 1           
+            return 1 
+        
+        if self.lifePts > 0  and self.armor <= 0:
+            if self.couleur == "blue":
+                Bretteur.degatRecuTotal += strengh
+            self.lifePts = self.lifePts - strengh
+            #print(self.lifePts," vie ")
+            return "vie"
+
+        
+        if self.lifePts <= 0 :
+            self.Index.mort(self)
+            return "mort"
 
 
 
@@ -393,10 +497,56 @@ class Chevalier(Character):
     def __init__(self,color,plateauDeJeu,nbPixelX,name,index):
         Character.__init__(self,color,plateauDeJeu,nbPixelX,name,index)
         self.role = "Chevalier"
-        self.initiative = 80           # L'initiative est à changer en fonction des perso
+        self.initiative = 65           # L'initiative est à changer en fonction des perso
         self.lifePts = 75
         self.armor = 15
         self.strengh = 25
+        self.cost = 35
+
+    def getVariableAlgo(self):
+        return self.degatRecuTotal,self.degatInfligeTotal
+
+    def attaqueCible (self,objPersonnage):
+        attaquePossible = randrange(1,101,1)
+        if  attaquePossible <= self.initiative:
+           vieOrMort = objPersonnage.degatSubit(self.strengh)
+           if self.couleur == "blue":
+               Chevalier.degatInfligeTotal += self.strengh
+               
+           return vieOrMort
+
+        #Cette fonction est pour retiré des points de vie à une unité en fonction de l'attaque reçu
+        
+    def degatSubit(self,strengh):
+
+        if self.lifePts <= 0 :
+           self.Index.mort(self)
+           return "mort"
+
+        if self.armor > 0 and self.lifePts > 0:
+            degatTampon =  strengh*(self.armor / 100)
+            if self.couleur == "blue":
+                value = strengh - degatTampon
+                Chevalier.degatRecuTotal += value
+            
+            
+            self.lifePts = self.lifePts -(strengh - degatTampon)
+            self.armor = self.armor - 1           
+            return 1 
+        
+        if self.lifePts > 0  and self.armor <= 0:
+            if self.couleur == "blue":
+                Chevalier.degatRecuTotal += strengh
+            self.lifePts = self.lifePts - strengh
+            #print(self.lifePts," vie ")
+            return "vie"
+
+        
+        if self.lifePts <= 0 :
+            self.Index.mort(self)
+            return "mort"
+        
+    
 
 
 

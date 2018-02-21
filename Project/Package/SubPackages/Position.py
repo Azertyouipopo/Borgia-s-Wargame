@@ -16,21 +16,34 @@ class Position:
         self.tableauDeClasse = [self.Fantassin,self.Bretteur,self.Chevalier]
         self.nombreDeClasse = len(self.tableauDeClasse)
         self.algoClasse(self)
+        varControl = 0
+        
+        while varControl == 0 :
+            i = int(input("Combien d'argent possédée vous ?"))
+            if i >  0 :
+                break
 
+        for 
+        
+        
+        
         self.test = self.algoChoixDeClasse()
         self.test1 = self.algoChoixDeClasse()
+        self.test2 = self.algoChoixDeClasse()
         self.personnage = self.test('blue',plateauDeJeu,nbPixelX,"personnage",index)
         self.personnage4 = self.test1('blue',plateauDeJeu,nbPixelX,"personnage4",index)
-        
+        self.personnage5 = self.test2('blue',plateauDeJeu,nbPixelX,"personnage5",index)
 
         # qui insére ces coordonée de postion d'apres le tableauGeneral
         self.plateauDeJeu.tableauGeneral[90][2] = self.personnage
         self.plateauDeJeu.tableauGeneral[91][2] = self.personnage4
+        self.plateauDeJeu.tableauGeneral[92][2] = self.personnage5
         
         
 
         self.personnage.setPosition(self.plateauDeJeu.tableauGeneral[90][0])
-        self.personnage4.setPosition(self.plateauDeJeu.tableauGeneral[91][0]) 
+        self.personnage4.setPosition(self.plateauDeJeu.tableauGeneral[91][0])
+        self.personnage5.setPosition(self.plateauDeJeu.tableauGeneral[92][0]) 
 
         self.initArmeeRouge()
 

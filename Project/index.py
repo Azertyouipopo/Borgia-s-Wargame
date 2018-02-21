@@ -11,7 +11,7 @@ class Index:
 
         
         #self.plateauDeJeuTK = PlateauDeJeuTK() # Initialisation du plateauTkinter
-        print("bug")
+        
 
         ### Initialisation des attribut lambda ###
         #self.nbPixelX = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour x
@@ -20,8 +20,9 @@ class Index:
         #self.nbPixelY = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour y
         self.indiceB = 0 # Initialisation d'un indice de recherche in array Bleu
         self.indiceR = 0 # Initialisation d'un indice de recherche in array Rouge
-        self.step = 10 # variable de controle 
+        self.step = 10 # variable de controle
         self.tableauClasse = [Fantassin,Bretteur,Chevalier]
+        
         
         ###Initialisation des classes ###
         self.plateauDeJeu = Plateau(self.nbPixelX,self.nbPixelY,self.step) # Instancie notre plateauDejeu        
@@ -106,11 +107,40 @@ class Index:
                         #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
                         #self.plateauDeJeuTK.positionJoueurRouge(self.tableauRed)
 
+            return 0
+
+
+
+
+
+        if len(self.tableauBleu) >= len(self.tableauRed):
+
+            
+            tailleMax = len(self.tableauBleu) - 1 #var type int , contien la taille tu tableauRed
+            
+            for x in range(0,len(self.tableauBleu)):
+
+               
+                tailleMax = len(self.tableauBleu) - 1
+                
+                if x <= len(self.tableauRed) - 1 :
+                    if self.tableauRed[x] != "mort":
+                        vieOrMort = self.tableauRed[x].setMouvement()
+                        #self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
+                        #self.plateauDeJeuTK.positionJoueurBleu(self.tableauBleu)
+                if x <= tailleMax:
+                    if self.tableauBleu[x] != "mort":
+                        self.tableauBleu[x].setMouvement()
+                        #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
+                        #self.plateauDeJeuTK.positionJoueurRouge(self.tableauRed)   
+
+            return 0 
+
     def remisAzero(self):
 
-        self.statCharacterAlgo()
-        Character.blue = []#Destruction du tableau precedent
-        Character.red = [] #Destruction du tableau precedent       
+        self.testAlgo()
+        Character.destroyArmy(self)#Destruction du tableau precedent
+        #Destruction du tableau precedent       
         #self.nbPixelX = self.plateauDeJeuTK.totalCaseTK # recuperation d'apres obj pDJTK des case pour x
         self.nbPixelX = 100
         self.nbPixelY = 100
@@ -120,23 +150,35 @@ class Index:
         self.step = 10 # variable de controle 
         ###Initialisation des classes ###
         self.plateauDeJeu = Plateau(self.nbPixelX,self.nbPixelY,self.step) # Instancie notre plateauDejeu
-
+        
         
         self.trya = Position(self.plateauDeJeu,Character,Fantassin,Bretteur,Chevalier,self.nbPixelX,self) # implante des soldat dans le terain
         self.tableauBleu = Character.blue #Recuperation du tableau bleu représentant une equipe
         self.tableauRed = Character.red #Recuperation du tableau bleu représentant une equipe
         self.gestionDePartie()
 
-    def statCharacterAlgo(self):
-        for i in range(0,len(self.tableauClasse)):
-            print(self.tableauClasse[i].getVariableAlgo()," NB degat reçu classe total ")
-            
-        
 
+    
+       
+            
+    def testAlgo(self):
+        ratioAlgo = 0
+        for i in range (0,len(self.tableauBleu)):
+            if self.tableauBleu[i] != "mort":
+                print(self.tableauBleu[i].degatRecuTotal, self.tableauBleu[i].role,"degatReçu")
+                print(self.tableauBleu[i].degatInfligeTotal, self.tableauBleu[i].role,"degatInflige")
+                
+                if self.tableauBleu[i].degatRecuTotal == 0 :
+                    return 0
+                
+                ratioAlgo = self.tableauBleu[i].degatInfligeTotal / self.tableauBleu[i].degatRecuTotal
+                print("Voici le ratio",ratioAlgo," ",self.tableauBleu[i].role)
+            
+                
         
     #Fonction  gére la gestion globale de notre application 
     def gestionDePartie (self):
-        
+            
         tempsDeplacement = 0
         self.view(self.plateauDeJeu)
         fin = 1
