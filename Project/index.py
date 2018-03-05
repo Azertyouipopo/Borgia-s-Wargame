@@ -10,7 +10,7 @@ class Index:
     def __init__ (self) :
 
         
-        #self.plateauDeJeuTK = PlateauDeJeuTK() # Initialisation du plateauTkinter
+        self.plateauDeJeuTK = PlateauDeJeuTK() # Initialisation du plateauTkinter
         
 
         ### Initialisation des attribut lambda ###
@@ -84,6 +84,7 @@ class Index:
 
     # fonction qui gére le deplacement des unités 
     def mouvement(self):
+        self.plateauDeJeuTK.setTableauJoueur(self.tableauRed,self.tableauBleu)
 
         # Verificaion quelle equipe est plus grande de l'autre
         if len(self.tableauRed) >= len(self.tableauBleu):
@@ -99,13 +100,9 @@ class Index:
                 if x <= len(self.tableauBleu) - 1 :
                     if self.tableauBleu[x] != "mort":
                         vieOrMort = self.tableauBleu[x].setMouvement()
-                        #self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
-                        #self.plateauDeJeuTK.positionJoueurBleu(self.tableauBleu)
                 if x <= tailleMax:
                     if self.tableauRed[x] != "mort":
                         self.tableauRed[x].setMouvement()
-                        #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
-                        #self.plateauDeJeuTK.positionJoueurRouge(self.tableauRed)
 
             return 0
 
@@ -126,14 +123,11 @@ class Index:
                 if x <= len(self.tableauRed) - 1 :
                     if self.tableauRed[x] != "mort":
                         vieOrMort = self.tableauRed[x].setMouvement()
-                        #self.plateauDeJeuTK.setTabCharacter(self.plateauDeJeu.getTableauGeneral())
-                        #self.plateauDeJeuTK.positionJoueurBleu(self.tableauBleu)
+
                 if x <= tailleMax:
                     if self.tableauBleu[x] != "mort":
                         self.tableauBleu[x].setMouvement()
-                        #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
-                        #self.plateauDeJeuTK.positionJoueurRouge(self.tableauRed)   
-
+                        
             return 0 
 
     def remisAzero(self):
@@ -182,25 +176,22 @@ class Index:
         tempsDeplacement = 0
         self.view(self.plateauDeJeu)
         fin = 1
-        #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
-
+        self.plateauDeJeuTK.setPositionJoueur(self.plateauDeJeu.getTableauGeneral())
         
         while  fin ==  1:
             
             tempsDeplacement += 1
-
-            #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
-
             self.mouvement()
             self.view(self.plateauDeJeu) #appéle de notre fonction d'affichage
+            self.plateauDeJeuTK.setPositionJoueur(self.plateauDeJeu.getTableauGeneral())
             variableFinPartie = self.conditionFinDePartie()
-            #self.plateauDeJeuTK.setTabCharacterRouge(self.plateauDeJeu.getTableauGeneral(),self.tableauRed)
 
             if variableFinPartie == 1 :
                 print(self.tableauBleu,"Tableau de l'equipe bleu ")
                 print(self.tableauRed,"Tableau de l'equipe rouge")
                 print(tempsDeplacement)
                 print("L'equipe bleu à gagner !")
+
                 self.remisAzero()
                 break
 
@@ -210,6 +201,7 @@ class Index:
                 print(self.tableauRed,"Tableau de l'equipe rouge")
                 print(tempsDeplacement)
                 print("L'equipe rouge à gagner !")
+
                 self.remisAzero()
                 break
         

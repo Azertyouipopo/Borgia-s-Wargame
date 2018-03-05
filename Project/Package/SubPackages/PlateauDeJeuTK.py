@@ -136,7 +136,6 @@ class PlateauDeJeuTK:
     def setTableauJoueur(self,tableauRed,tableauBleu):
         self.tabEqRed = tableauRed
         self.tabEqBleu = tableauBleu
-
     def setPositionJoueur(self,array):
         R = len(self.tabEqRed)
         B = len(self.tabEqBleu)
@@ -144,26 +143,24 @@ class PlateauDeJeuTK:
         b=0
         i=0
         j=0
-        while r < (R-1) and i < self.totalCaseTK:
-            if array[i][2]==self.tabEqRed[r] and r < (R-1):
+        while r < (R) and i < self.totalCaseTK:
+            if array[i][2]==self.tabEqRed[r] and r < (R):
                 self.tabPositionJRed.append(array[i][0])
                 r=r+1
                 i=0
                 print('Y')
-                print(i,r)
             else:
                 i=i+1
-                r=r
-                print(i,r)
-        while b < (B-1) and j< self.totalCaseTK:
-            if array[j][2]==self.tabEqRed[b] and b < (B-1):
+        while b < (B) and j< self.totalCaseTK:
+            if array[j][2]==self.tabEqRed[b] and b < (B):
                 self.tabPositionJBleu.append(array[j][0])
                 b=b+1
                 j=0
             else:
-                b=b
                 j=j+1
         print('Rouge',self.tabPositionJRed,'Bleu',self.tabPositionJBleu)
+        self.tabPositionJBleu = []
+        self.tabPositionJRed = []
 
     def settest(self):
         self.zoneCanvas.pack()
